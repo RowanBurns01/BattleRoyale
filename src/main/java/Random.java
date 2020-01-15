@@ -1,9 +1,5 @@
 public class Random {
 
-    public Random(){
-
-    }
-
     public int generateNumber(int n) {
         int max = n;
         int min = 0;

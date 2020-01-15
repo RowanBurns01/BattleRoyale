@@ -7,16 +7,20 @@ public class Player {
     private List<Weapon> weapons;
     private int killcount;
     private String name;
+    private String lastName;
     private boolean alive;
-    private String image;
 
-    public Player (String name, String image) {
+    public Player (String name, String lastName) {
         this.name = name;
+        this.lastName = lastName;
         this.killcount = 0;
         this.partner = null;
         this.alive = true;
-        this.image = image;
         this.weapons = new ArrayList<>();
+    }
+
+    public String getFullName() {
+        return name +" " + lastName;
     }
 
     public List<Weapon> getWeapons() {
@@ -25,7 +29,6 @@ public class Player {
 
     public void addWeapon(Weapon w) {
         this.weapons.add(w);
-        System.out.println(this.getName() + " has acquired " + w.getName() + ".");
     }
 
     public void removeWeapon(Weapon w){

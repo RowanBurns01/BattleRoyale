@@ -10,36 +10,38 @@ public class SetUp {
         Day d = new Day();
 
         List<Player> contestants = new ArrayList<>(Arrays.asList(
-                new Player("Rowan", "img"),
-                new Player("Jack","img"),
-                new Player("Rutkay", "img"),
-                new Player("Sam", "img"),
-                new Player("Parham", "img"),
-                new Player("Hugo","img"),
-                new Player("Jonah", "img"),
-                new Player("Will_Perry", "img"),
-                new Player("Justin", "img"),
-                new Player("Buffa", "img"),
-                new Player("Twills", "img"),
-                new Player("Matt_Sullivan", "img"),
-                new Player("Naren","img"),
-                new Player("Josh", "img"),
-                new Player("Tim", "img"),
-                new Player("Will_Lind", "img"),
-                new Player("Chico", "img"),
-                new Player("Percy", "img")
+                new Player("Rowan", "Burns"),
+                new Player("Jack","Paterson"),
+                new Player("Rutkay", "Alici"),
+                new Player("Sam", "Eames"),
+                new Player("Parham", "Raoof"),
+                new Player("Hugo","Treloar"),
+                new Player("Jonah", "Kingery"),
+                new Player("Autismo", "Perry"),
+                new Player("Justin", "Ford"),
+                new Player("Daniel", "Buffa"),
+                new Player("Tom", "Williams"),
+                new Player("Matt", "Sullivan"),
+                new Player("Naren","Iyer"),
+                new Player("Josh", "Lorschy"),
+                new Player("Tim", "Hughes"),
+                new Player("Will", "Lind"),
+                new Player("Jay", "Kotecha"),
+                new Player("Percy", "The Dog")
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
                 new Weapon("Machete", r.generateNumber(5)),
-                new Weapon("Spear", r.generateNumber(5)),
-                new Weapon("Club", r.generateNumber(5))
+                new Weapon("Spear", r.generateNumber(4)),
+                new Weapon("Club", r.generateNumber(3)),
+                new Weapon("Beanie", r.generateNumber(2))
         ));
 
-        Simulation game = new Simulation(r, d, contestants ,weaponry);
+        Simulation game = new Simulation(d, contestants ,weaponry);
         game.partnerUp();
-        game.round();
+        while (true){
+            game.singleDay();
+        }
 
     }
-
 }
