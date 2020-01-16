@@ -17,7 +17,6 @@ public class Day {
     }
 
     public void resetHour(){
-        getTimeOfDay();
         this.hour = 0;
     }
 
@@ -27,7 +26,7 @@ public class Day {
 
     public void getTimeOfDay() {
         System.out.println();
-        if(hour == 24){
+        if(hour == 0){
             System.out.println("Midnight");
         } else if (hour == 12){
             System.out.println("Noon");

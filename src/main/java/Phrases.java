@@ -1,25 +1,12 @@
 public class Phrases {
 
     public void welcomeText() {
-        System.out.println("\nWelcome to the hunger games, tributes are as follows:\n");
+        System.out.println("\nWelcome to the 1st Annual Hunger Games!\nYou have been chosen to represent your district in a fight to death.\nThere can only be one survivor...\n\nEach district's tributes are as follows:");
     }
 
     public void dayText(Day d) {
         System.out.print("\nDay " + d.getDay());
     }
 
-    public void remainingText(int num, int num2) {
-        if (num2 == 1) {
-            System.out.print("A single cannon shot fires, ");
-        }else if( num2== 0){
-            System.out.print("There are no cannon shots tonight, ");
-        } else {
-            System.out.print("There are " + num2 + " cannon shots in the night, ");
-        }
-        if (num < 6) {
-            System.out.println("only " + num + " tributes remain.");
-        } else {
-            System.out.println(num + " tributes remain.");
-        }
-    }
+
 }

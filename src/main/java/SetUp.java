@@ -31,16 +31,16 @@ public class SetUp {
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
-                new Weapon("Machete", r.generateNumber(5)),
-                new Weapon("Spear", r.generateNumber(4)),
-                new Weapon("Club", r.generateNumber(3)),
-                new Weapon("Beanie", r.generateNumber(2))
+                new Weapon("Speech Impediment", r.generateNumber(3)),
+                new Weapon("Dragunov", r.generateNumber(3)),
+                new Weapon("Warm Socks", r.generateNumber(3)),
+                new Weapon("Serrated Frisbee", r.generateNumber(3))
         ));
 
         Simulation game = new Simulation(d, contestants ,weaponry);
-        game.partnerUp();
+        game.configure();
         while (true){
-            game.singleDay();
+            game.run();
         }
 
     }

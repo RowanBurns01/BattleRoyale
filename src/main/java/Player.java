@@ -9,6 +9,7 @@ public class Player {
     private String name;
     private String lastName;
     private boolean alive;
+    private boolean inLove;
 
     public Player (String name, String lastName) {
         this.name = name;
@@ -16,6 +17,7 @@ public class Player {
         this.killcount = 0;
         this.partner = null;
         this.alive = true;
+        this.inLove = false;
         this.weapons = new ArrayList<>();
     }
 
@@ -37,6 +39,14 @@ public class Player {
 
     public boolean equals(Player p) {
         return p.getName() == this.name;
+    }
+
+    public void setInLove(){
+        this.inLove = true;
+    }
+
+    public boolean getInLove(){
+        return this.inLove;
     }
 
     public int weaponBonus() {
@@ -74,6 +84,8 @@ public class Player {
     public void incKillCount() {
         this.killcount ++;
     }
+
+    public void decKillCount() {this.killcount --;}
 
     public int getKillCount() {
         return this.killcount;

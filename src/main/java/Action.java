@@ -11,11 +11,13 @@ public class Action {
     private List<Player> unavailable;
     private List<Player> killed;
     private List<String> hourLog;
+    private Weather w;
 
     public Action( Day d, List<String> hourLog, List<Player> contestants, List<Weapon> weaponry, List<Player> unavailable, List<Player> killed){
         this.hourLog = hourLog;
         this.r = new Random();
         this.d = d;
+        this.w = Weather.FINE;
         this.contestants = contestants;
         this.weaponry = weaponry;
         this.unavailable = unavailable;
@@ -23,25 +25,16 @@ public class Action {
     }
 
     public void suicide(Player p) {
-        int num = r.generateNumber(2);
-        if(num<1){
-            hourLog.add(p.getName() + " couldn't take it anymore rip.");
-        } else if(num<2){
-            hourLog.add(p.getName() + " died from starvation.");
-        } else if(num<3){
-            boolean beanie = false;
-            for(Weapon w: p.getWeapons()){
-                if(w.getName() == "Beanie"){
-                    beanie = true;
-                }
-            }
-            if(beanie) {
-                hourLog.add(p.getName() + " put beanie on to protect from the cold.");
-            } else {
-                hourLog.add(p.getName() + " froze to death in the cold.");
-            }
-        } else {
-            hourLog.add(p.getName() + " jumped off the edge.");
+        switch(w){
+            case HOT:
+                hourLog.add("Due to the heat, " + p.getName() + " died from dehydration.");
+                break;
+            case COLD:
+                hourLog.add("Unable to escape the rain, " + p.getName() + " drowned himself in the river.");
+                break;
+            case FINE:
+                hourLog.add(p.getName() + " couldn't take it anymore rip.");
+                break;
         }
         p.setAlive(false);
         killed.add(p);
@@ -82,6 +75,7 @@ public class Action {
     public void fight(Player p) {
 
         Player opponent = chooseRandomPerson(p, contestants);
+
         if (opponent != null) {
             List<Player> totalPlayers = new ArrayList<>(Arrays.asList(
                     p,
@@ -89,10 +83,10 @@ public class Action {
             ));
 
             // Add friends
-            if (p.hasLivingPartner() && !totalPlayers.contains(p.getPartner())) {
+            if (p.hasLivingPartner() && !totalPlayers.contains(p.getPartner()) && 1 == r.generateNumber(1)) {
                 totalPlayers.add(p.getPartner());
             }
-            if (opponent.hasLivingPartner() && !totalPlayers.contains(opponent.getPartner())) {
+            if (opponent.hasLivingPartner() && !totalPlayers.contains(opponent.getPartner()) && 1 == r.generateNumber(1)) {
                 totalPlayers.add(opponent.getPartner());
             }
             String message = "A fight breaks out between: ";
@@ -119,14 +113,18 @@ public class Action {
                             winner = two;
                             loser = one;
                         }
+                        if(loser.hasLivingPartner()){
+                            if(loser.getInLove()){
+                                hourLog.add("Just as " + loser.getName() + " was about to be killed by " + winner.getName() +", " + loser.getPartner().getName() + " sacrificed himself out of love.");
+                                loser = loser.getPartner();
+                            }
+                        }
                         Weapon knuckles = new Weapon("knuckles", 3);
                         if(winner.getWeapons().isEmpty()){
                             winner.addWeapon(knuckles);
                         }
-                        if(winner.hasLivingPartner()){
-                            if(winner.getPartner().getWeapons().isEmpty()) {
-                                hourLog.add(winner.getName() + " and " + winner.getPartner().getName() + " have killed " + loser.getName() + " with their " + winner.getWeapons().get(0).getName()+ ".");
-                            }
+                        if(winner.hasLivingPartner() && totalPlayers.contains(winner.getPartner())){
+                            hourLog.add(winner.getName() + " and " + winner.getPartner().getName() + " have killed " + loser.getName() + " with their " + winner.getWeapons().get(0).getName()+ ".");
                         } else {
                             hourLog.add(winner.getName() + " has killed " + loser.getName() + " with his " + winner.getWeapons().get(0).getName()+ ".");
                         }
@@ -148,6 +146,7 @@ public class Action {
             }
         }
     }
+
     public Player chooseRandomPerson(Player p, List<Player> list){
         Player person = list.get(r.generateNumber(list.size()-1));
         if(p.getPartner() != null) {
@@ -165,6 +164,7 @@ public class Action {
         }
         return null;
     }
+
     public Player chooseRandomPerson(List<Player> list){
         Player person = list.get(r.generateNumber(list.size()-1));
         int i = 0;
@@ -175,5 +175,32 @@ public class Action {
             i++;
         }
         return null;
+    }
+
+    public void fallInLove(Player p){
+        if(p.hasLivingPartner() && !p.getInLove()){
+            hourLog.add(p.getName() + " has fallen in love with "+ p.getPartner().getName() + ".");
+            p.setInLove();
+            p.getPartner().setInLove();
+        }
+    }
+
+    public void randomWeather(){
+        int num = r.generateNumber(5);
+        if( num == 0) {
+            if(w != Weather.HOT) {
+                w = Weather.HOT;
+                System.out.println("The sun is beating down.");
+            } else {
+                System.out.println("The sun continues to beat down.");
+            }
+        } else if( num == 1) {
+            if(w != Weather.COLD){
+                w = Weather.COLD;
+                System.out.println("It has started to rain.");
+            } else {
+                System.out.println("It is still raining.");
+            }
+        }
     }
 }
