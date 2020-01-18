@@ -8,6 +8,10 @@ public class Weapon {
         this.value = value;
     }
 
+    public String getImagePath(){
+        return name + ".jpg";
+    }
+
     public String getName() {
         return name;
     }

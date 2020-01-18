@@ -4,6 +4,8 @@ public class Day {
     private int hour;
 
     public Day(){
+
+        // Starting Time
         this.day = 1;
         this.hour = 6;
     }
@@ -24,16 +26,15 @@ public class Day {
         return this.hour;
     }
 
-    public void getTimeOfDay() {
-        System.out.println();
+    public String getTimeOfDay() {
         if(hour == 0){
-            System.out.println("Midnight");
+            return "Midnight";
         } else if (hour == 12){
-            System.out.println("Noon");
+            return "Noon";
         } else if (hour > 11){
-            System.out.println(hour-12 + ":00pm");
+            return hour-12 + ":00pm";
         } else {
-            System.out.println(hour + ":00am");
+            return hour + ":00am";
         }
     }
 

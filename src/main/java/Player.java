@@ -1,24 +1,32 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Player {
 
     private Player partner;
+    private Player lover;
     private List<Weapon> weapons;
-    private int killcount;
+    private int killCount;
     private String name;
     private String lastName;
     private boolean alive;
-    private boolean inLove;
 
     public Player (String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
-        this.killcount = 0;
+        this.killCount = 0;
         this.partner = null;
         this.alive = true;
-        this.inLove = false;
-        this.weapons = new ArrayList<>();
+        this.lover = null;
+        this.weapons = new ArrayList<Weapon>(Arrays.asList(
+                new Weapon("knuckles", 0),
+                new Weapon("bare hands", 0)
+        ));
+    }
+
+    public String getImagePath(){
+        return name + lastName + ".jpg";
     }
 
     public String getFullName() {
@@ -33,6 +41,18 @@ public class Player {
         this.weapons.add(w);
     }
 
+    public Weapon chooseWeapon(){
+        Random r = new Random();
+        return weapons.get(r.generateNumber(weapons.size()-1));
+    }
+
+    public String getAlive(){
+        if(alive){
+            return "Alive";
+        }
+        return "Dead";
+    }
+
     public void removeWeapon(Weapon w){
         this.weapons.remove(w);
     }
@@ -41,12 +61,12 @@ public class Player {
         return p.getName() == this.name;
     }
 
-    public void setInLove(){
-        this.inLove = true;
+    public void setLover(Player p){
+        this.lover = p;
     }
 
-    public boolean getInLove(){
-        return this.inLove;
+    public Player getLover(){
+        return this.lover;
     }
 
     public int weaponBonus() {
@@ -82,12 +102,12 @@ public class Player {
     }
 
     public void incKillCount() {
-        this.killcount ++;
+        this.killCount++;
     }
 
-    public void decKillCount() {this.killcount --;}
+    public void decKillCount() {this.killCount--;}
 
     public int getKillCount() {
-        return this.killcount;
+        return this.killCount;
     }
 }
