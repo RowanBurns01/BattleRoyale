@@ -6,20 +6,22 @@ public class Player {
 
     private Player partner;
     private Player lover;
-    private List<Weapon> weapons;
-    private int killCount;
     private String name;
     private String lastName;
+    private List<Weapon> weapons;
+    private Random r = new Random();
+    private int killCount;
     private boolean alive;
+
 
     public Player (String name, String lastName) {
         this.name = name;
         this.lastName = lastName;
         this.killCount = 0;
         this.partner = null;
-        this.alive = true;
         this.lover = null;
-        this.weapons = new ArrayList<Weapon>(Arrays.asList(
+        this.alive = true;
+        this.weapons = new ArrayList<>(Arrays.asList(
                 new Weapon("knuckles", 0),
                 new Weapon("bare hands", 0)
         ));
@@ -30,7 +32,7 @@ public class Player {
     }
 
     public String getFullName() {
-        return name +" " + lastName;
+        return name + " " + lastName;
     }
 
     public List<Weapon> getWeapons() {
@@ -41,17 +43,7 @@ public class Player {
         this.weapons.add(w);
     }
 
-    public Weapon chooseWeapon(){
-        Random r = new Random();
-        return weapons.get(r.generateNumber(weapons.size()-1));
-    }
-
-    public String getAlive(){
-        if(alive){
-            return "Alive";
-        }
-        return "Dead";
-    }
+    public Weapon chooseWeapon(){ return weapons.get(r.generateNumber(weapons.size()-1)); }
 
     public void removeWeapon(Weapon w){
         this.weapons.remove(w);
@@ -75,6 +67,10 @@ public class Player {
             total += w.getValue();
         }
         return total;
+    }
+
+    public Boolean getAlive(){
+        return this.alive;
     }
 
     public String getName() {

@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Simulation {
 
     private Action a;
     private Day d = new Day();
-    private Post post = new Post();
+    private Post post = new Post(d);
     private List<String> hourLog = new ArrayList<>();
     private List<Player> allContestants = new ArrayList<>();
     private List<Player> contestants;
@@ -34,46 +33,43 @@ public class Simulation {
 
         // Fight Action
 
-        boolean fightOccured = false;
+        boolean eventOccurred = false;
+        String flag = "";
         for(Player p : contestants){
-            if(0.09*scaleDay/contestants.size() > Math.random() && !fightOccured){
-                a.singlefight(p);
-                fightOccured = true;
-            } else if(0.03*scaleDay/contestants.size() > Math.random() && !fightOccured){
-                a.fight(p);
-                fightOccured = true;
-            }
-        }
-
-        // Alternate Action
-        for(Player p : contestants){
-            if(!unavailable.contains(p) & !fightOccured){
-                double num = Math.random();
-                if( num < 0.006*scaleDay){
+            if(!eventOccurred){
+                if( Math.random() < 0.25 * scaleDay/contestants.size()){
+                    a.fight(p);
+                    eventOccurred = true;
+                    flag = "death";
+                } else if(Math.random() < 0.25 * scaleDay/contestants.size()){
+                    a.singlefight(p);
+                    eventOccurred = true;
+                    flag = "death";
+                } else if( Math.random() < 0.01 * scaleDay){
                     a.loot(p);
-                }
-                num = Math.random();
-                if (num < 0.003*scaleNight){
+                    eventOccurred = true;
+                    flag = "item";
+                } else if (Math.random() < 0.003 * scaleNight){
                     if(contestants.size() > 2 && !tokenSuicideOccured) {
                         tokenSuicideOccured = true;
                         a.suicide(p);
+                        eventOccurred = true;
+                        flag = "death";
                     }
-                }
-                num = Math.random();
-                if (num < 0.003*scaleDay){
+                } else if (Math.random() < 0.001 * scaleDay){
                     a.steal(p);
-                }
-                num = Math.random();
-                if (num < 0.004){
+                    eventOccurred = true;
+                    flag = "item";
+                } else if (Math.random() < 0.001){
                     a.fallInLove(p);
+                    eventOccurred = true;
+                    flag = "love";
                 }
             }
         }
 
-        String flag = "";
         for(Player k: killed){
             contestants.remove(k);
-            flag = "death";
         }
 
         facebookPost(flag);
@@ -98,7 +94,7 @@ public class Simulation {
             if(flag == "death" && !(contestants.size() <= 1)){
                 msg += "\nThere are " + contestants.size() + " tributes remaining...";
             }
-
+            post.setFlag(flag);
             post.addPlayers(listPlayers);
             post.combinePictures();
             post.makePost(msg);
@@ -122,21 +118,21 @@ public class Simulation {
     }
 
     public void configure() {
-        String msg = "\nWelcome to the 1st Annual Hunger Games!\nYou have been chosen to represent your district in a fight to death.\nThere can only be one survivor...\n\nThe tributes are as follows:";
+        String msg = "\nWelcome to the first annual Hunger Games!\nYou have been chosen to represent your district.\nThis is a fight to the death, there will only be one survivor...\n\nThe tributes from each district are:";
         int count = 1;
         for (Player p: contestants){
             while(!p.hasLivingPartner()){
                 Player partner = a.chooseRandomPerson(p, contestants);
                 if(!partner.hasLivingPartner()){
                     p.setPartner(partner);
-                    msg += "\nDistrict "+ count+ " are: " + p.getFullName() + " & " + p.getPartner().getFullName() + ".";
+                    msg += "\nDistrict "+ count+ ": " + p.getFullName() + " & " + p.getPartner().getFullName() + ".";
                     count ++;
                     partner.setPartner(p);
                 }
             }
             allContestants.add(p);
         }
-        post.makeTextPost(msg);
+        post.makeTextPost(msg + "\n\nMay the odds be ever in your favour.");
     }
 
     public String stats(){
@@ -155,7 +151,11 @@ public class Simulation {
             allContestants.remove(t);
         }
         for(Player p: ordered){
-            msg +="\n[" +p.getAlive() +"] " + p.getName()+"'s kills: "+ p.getKillCount();
+            String status = "Dead";
+            if(p.getAlive()){
+                status = "Winner";
+            }
+            msg +="\n[" +status +"] " + p.getName()+"'s kills: "+ p.getKillCount();
         }
         return msg;
     }
@@ -164,19 +164,25 @@ public class Simulation {
 
         // Finish
         if(contestants.size()<=1 || (contestants.size() == 2 && contestants.get(0).hasLivingPartner()) ){
-            Post post = new Post();
             String msg = "";
             if(contestants.size() == 1){
-                post.addPlayers(contestants);
-                msg = "\nCongratulations " + contestants.get(0).getFullName() + "! You are the victor of the First Annual Hunger Games, winning with " + contestants.get(0).getKillCount() + " kills.";
+                msg = "\nCongratulations " + contestants.get(0).getFullName() + "!\nYou are the victor of the first annual Hunger Games, winning with " + contestants.get(0).getKillCount();
+                if(contestants.get(0).getKillCount() == 1){
+                    msg += " kill.";
+                } else {
+                    msg += " kills.";
+                }
             } else if (contestants.get(0).getPartner().equals(contestants.get(1))){
-                msg = "\nThe two contestants remaining are from the same district.\n" + contestants.get(0).getName() + " and " + contestants.get(1).getName() + " decide to lay down their weapons.\nBrothers in arms, they both eat a single poisonous berry.";
-                msg += "\n\nThe First Annual Hunger Game is finished, there were no survivors :(";
+                msg = "\nThe two contestants remaining are from the same district.\nUnable to kill each other, " + contestants.get(0).getName() + " and " + contestants.get(1).getName() + " decide to lay down their weapons.\nConvinced that some divine intervention will save them, they both eat a poisonous berry.";
+                msg += "\n\nThe first annual Hunger Game has finished, there were no survivors :(";
                 contestants.get(0).setAlive(false);
                 contestants.get(1).setAlive(false);
             }
             msg += stats();
             if(contestants.size() ==1){
+                post.setFlag("death");
+                post.addPlayers(contestants);
+                post.combinePictures();
                 post.makePost(msg);
             } else {
                 post.makeTextPost(msg);

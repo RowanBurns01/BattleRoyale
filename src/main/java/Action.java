@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Action {
 
-    private Random r;
+    private Random r = new Random();
     private Day d;
     private List<Player> contestants;
     private List<Weapon> weaponry;
@@ -15,7 +15,6 @@ public class Action {
 
     public Action( Day d, List<String> hourLog, List<Player> contestants, List<Weapon> weaponry, List<Player> unavailable, List<Player> killed, List<Player> listPlayers){
         this.hourLog = hourLog;
-        this.r = new Random();
         this.d = d;
         this.contestants = contestants;
         this.weaponry = weaponry;
@@ -27,13 +26,13 @@ public class Action {
     public void suicide(Player p) {
         switch(r.generateNumber(2)){
             case 0:
-                hourLog.add("Due to the heat, " + p.getName() + " died from dehydration.");
+                hourLog.add(p.getName() + " was unable to find water and died from dehydration.");
                 break;
             case 1:
-                hourLog.add("Unable to escape the rain, " + p.getName() + " drowned himself in the river.");
+                hourLog.add(p.getName() + " has been swept away in a flood and drowned.");
                 break;
             case 2:
-                hourLog.add(p.getName() + " couldn't handle the pressure rip.");
+                hourLog.add(p.getName() + " couldn't handle the pressure and took his own life.");
                 break;
         }
         p.setAlive(false);
@@ -52,7 +51,7 @@ public class Action {
                     choices.add(g);
                 }
                 for(Weapon w : choices){
-                    if(w.getValue() != 0) {
+                    if(w.getValue() != 0 && !stolen) {
                         two.removeWeapon(w);
                         p.addWeapon(w);
                         listPlayers.add(p);
@@ -89,7 +88,6 @@ public class Action {
                     opponent
             ));
 
-            // Add friends
             if (p.hasLivingPartner() && !totalPlayers.contains(p.getPartner()) && 1 == r.generateNumber(1)) {
                 totalPlayers.add(p.getPartner());
             }
@@ -123,9 +121,11 @@ public class Action {
 
                             Player winner = one;
                             Player loser = two;
-
-
-                            if (one.weaponBonus() + r.generateNumber(10) < two.weaponBonus() + r.generateNumber(10)) {
+                            int roleOne = winner.weaponBonus() + r.generateNumber(10);
+                            int roleTwo = loser.weaponBonus() + r.generateNumber(10);
+//                            hourLog.add(winner.getName()+" : "+roleOne);
+//                            hourLog.add(loser.getName()+" : "+roleTwo);
+                            if ( roleOne < roleTwo) {
                                 winner = two;
                                 loser = one;
                             }
@@ -136,7 +136,7 @@ public class Action {
                                 }
                             }
                             if(winner.hasLivingPartner() && totalPlayers.contains(winner.getPartner()) && !unavailable.contains(winner.getPartner())){
-                                hourLog.add(winner.getName() + " and " + winner.getPartner().getName() + " have killed " + loser.getName() + " with their " + winner.getWeapons().get(0).getName()+ ".");
+                                hourLog.add(winner.getName() + " and " + winner.getPartner().getName() + " have killed " + loser.getName() + " with their " + winner.chooseWeapon().getName()+ ".");
                             } else {
                                 hourLog.add(winner.getName() + " has killed " + loser.getName() + " with his " + winner.chooseWeapon().getName() + ".");
                             }
@@ -167,21 +167,26 @@ public class Action {
         Player winner = p;
         Player loser = chooseRandomPerson(p, contestants);
         if(loser != null){
-
-            if (p.weaponBonus() + r.generateNumber(10) < loser.weaponBonus() + r.generateNumber(10)) {
+            int roleOne = p.weaponBonus() + r.generateNumber(10);
+            int roleTwo = loser.weaponBonus() + r.generateNumber(10);
+//            hourLog.add(p.getName()+" : "+roleOne);
+//            hourLog.add(loser.getName()+" : "+roleTwo);
+            if ( roleOne < roleTwo) {
                 winner = loser;
                 loser = p;
             }
-            listPlayers.add(winner);
-            listPlayers.add(loser);
+
             String msg = "";
-            if(loser.getLover() != null){
-                msg += "Just as " + loser.getName() + " was about to be killed by " + winner.getName() +", " + loser.getLover().getName() + " sacrificed himself out of love. ";
-                loser = loser.getLover();
+            if(loser.getLover() != null && !loser.getLover().equals(winner) && loser.getLover().getAlive()){
+                msg += "Just as " + loser.getName() + " was about to be killed by " + winner.getName() +", " + loser.getLover().getName() + " sacrificed himself out of love.\n";
+                Player og = loser;
+                loser = og.getLover();
+                og.setLover(null);
+                listPlayers.add(og);
             } else if (loser.getPartner().equals(winner)) {
-                msg += winner.getName() + " became paranoid that his partner was going to betray him. ";
+                msg += winner.getName() + " became paranoid that his partner "+ loser.getName() +" was going to betray him.\n";
             } else if(d.getHour() <3 || d.getHour() > 23) {
-                msg += winner.getName() + " used the cover of night to sneak into " + loser.getName() + "'s campsite. ";
+                msg += winner.getName() + " used the cover of night to sneak into " + loser.getName() + "'s campsite.\n";
             }
 
             hourLog.add(msg + winner.getName() + " has killed " + loser.getName() + " with his " + winner.chooseWeapon().getName() + ".");
@@ -190,6 +195,8 @@ public class Action {
             killed.add(loser);
             unavailable.add(loser);
             Weapon w = takeWeapon(winner, loser);
+            listPlayers.add(winner);
+            listPlayers.add(loser);
             if(w!= null){
                 hourLog.add("From "+ loser.getName() +"'s dead body, " + winner.getName() + " has acquired a " + w.getName() + ".");
             }
@@ -207,15 +214,9 @@ public class Action {
     }
 
     public Player chooseRandomPerson(Player p, List<Player> list){
-        Player person = list.get(r.generateNumber(list.size()-1));
-        if(p.getPartner() != null) {
-            if (!person.equals(p) && !p.getPartner().equals(person) && !unavailable.contains(person)) {
-                return person;
-            }
-        }
         int i = 0;
         while(i <10){
-            person = list.get(r.generateNumber(list.size()-1));
+            Player person = list.get(r.generateNumber(list.size()-1));
             if(!person.equals(p) && !unavailable.contains(person)) {
                 return person;
             }
@@ -237,9 +238,9 @@ public class Action {
     }
 
     public void fallInLove(Player p){
-        if(p.getLover() != null){
+        if(p.getLover() == null){
             Player lover = chooseRandomPerson(p, contestants);
-            if(lover.getLover() != null) {
+            if(lover.getLover() == null) {
                 hourLog.add(p.getName() + " and " + lover.getName() + " have fallen in love.");
                 p.setLover(lover);
                 lover.setLover(p);

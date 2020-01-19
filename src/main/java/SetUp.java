@@ -6,8 +6,6 @@ public class SetUp {
 
     public static void main(String args[]){
 
-        Random r = new Random();
-
         List<Player> contestants = new ArrayList<>(Arrays.asList(
                 new Player("Rowan", "Burns"),
                 new Player("Jack","Paterson"),
@@ -26,13 +24,13 @@ public class SetUp {
                 new Player("Tim", "Hughes"),
                 new Player("Will", "Lind"),
                 new Player("Jay", "Kotecha"),
-                new Player("Percy", "TheDog")
+                new Player("Percy", "The Dog")
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
-                new Weapon("Ballistic Knife", r.generateNumber(5)),
-                new Weapon("Serrated Frisbee", r.generateNumber(5)),
-                new Weapon("Poison Dart Frog", r.generateNumber(5))
+                new Weapon("Ballistic Knife", 3),
+                new Weapon("Serrated Frisbee", 2),
+                new Weapon("Diamond Sword", 4)
         ));
 
         Simulation game = new Simulation(contestants, weaponry);

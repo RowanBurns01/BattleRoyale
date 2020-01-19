@@ -1,13 +1,24 @@
+import java.util.Calendar;
+import java.util.Date;
+
 public class Day {
 
     private int day;
     private int hour;
 
     public Day(){
-
-        // Starting Time
         this.day = 1;
-        this.hour = 6;
+        this.hour = 8;
+    }
+
+    public Date getDate(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY,hour + 24*day);
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MILLISECOND,0);
+        Date d = cal.getTime();
+        return d;
     }
 
     public void nextHour() {
