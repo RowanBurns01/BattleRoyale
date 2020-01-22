@@ -24,15 +24,12 @@ public class Action {
     }
 
     public void suicide(Player p) {
-        switch(r.generateNumber(2)){
+        switch(r.generateNumber(1)){
             case 0:
-                hourLog.add(p.getName() + " was unable to find water and died from dehydration.");
+                hourLog.add(p.getName() + " was unable to find water and has died from dehydration.");
                 break;
             case 1:
-                hourLog.add(p.getName() + " has been swept away in a flood and drowned.");
-                break;
-            case 2:
-                hourLog.add(p.getName() + " couldn't handle the pressure and took his own life.");
+                hourLog.add(p.getName() + " has been swept away in a flood and has drowned.");
                 break;
         }
         p.setAlive(false);

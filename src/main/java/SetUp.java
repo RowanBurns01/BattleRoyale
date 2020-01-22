@@ -24,7 +24,7 @@ public class SetUp {
                 new Player("Tim", "Hughes"),
                 new Player("Will", "Lind"),
                 new Player("Jay", "Kotecha"),
-                new Player("Percy", "The Dog")
+                new Player("Ed", "Sisson")
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
