@@ -37,11 +37,11 @@ public class Simulation {
         String flag = "";
         for(Player p : contestants){
             if(!eventOccurred){
-                if( Math.random() < 0.20 * scaleDay/contestants.size()){
+                if( Math.random() < 0.25 * scaleDay/contestants.size()){
                     a.fight(p);
                     eventOccurred = true;
                     flag = "death";
-                } else if(Math.random() < 0.20 * scaleDay/contestants.size()){
+                } else if(Math.random() < 0.25 * scaleDay/contestants.size()){
                     a.singlefight(p);
                     eventOccurred = true;
                     flag = "death";

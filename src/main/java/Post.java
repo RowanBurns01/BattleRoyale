@@ -28,20 +28,21 @@ public class Post {
     }
 
     public void makePost(String msg){
-//        System.out.println("\n"  + d.getDate().toString() + msg);
-        postCount();
+        System.out.println("\n"  + d.getDate().toString() + msg);
+        count ++;
+//        postCount();
 //        GraphResponse publishPhotoResponse = facebookClient.publish("me/photos", GraphResponse.class,
 //                BinaryAttachment.with("HourlyPost", imageInByte),
-//                Parameter.with("message", msg),
+//                Parameter.with("message", msg));
 //                Parameter.with("published", false),
 //                Parameter.with("scheduled_publish_time", d.getDate().getTime() /1000));
     }
 
     public void makeTextPost(String msg){
 //        System.out.println("\n" + d.getDate().toString() + msg);
-        postCount();
+//        postCount();
 //        GraphResponse publishMessageResponse = facebookClient.publish("me/feed", GraphResponse.class,
-//                Parameter.with("message", msg),
+//                Parameter.with("message", msg));
 //                Parameter.with("published", false),
 //                Parameter.with("scheduled_publish_time", d.getDate()));
     }
@@ -61,8 +62,14 @@ public class Post {
     public void combinePictures() {
         try {
             finalImage = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(0).getImagePath()));
+            if(!players.get(0).getAlive()){
+                finalImage = overlayCross(finalImage);
+            }
             for(int i = 1; i < players.size(); i++){
                 BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(i).getImagePath()));
+                if(!players.get(i).getAlive()){
+                    img2 = overlayCross(img2);
+                }
                 finalImage = joinBufferedImage(finalImage, img2);
             }
             if(flag == "item"){
@@ -71,14 +78,49 @@ public class Post {
             }
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write( finalImage, "png", baos );
-            baos.flush();
+//            ImageIO.write( finalImage, "png", baos );
+            ImageIO.write( finalImage, "png", new File( "C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\post"+count+".png"));
+                    baos.flush();
             imageInByte = baos.toByteArray();
             baos.close();
 
         } catch (IOException | IndexOutOfBoundsException e) {
             e.printStackTrace();
         }
+    }
+
+    public BufferedImage overlayCross(BufferedImage img){
+
+        try {
+            BufferedImage cross = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\RedCross.png"));
+
+            int w = Math.max(img.getWidth(), cross.getWidth());
+            int h = Math.max(img.getHeight(), cross.getHeight());
+
+            BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+
+//            // paint both images, preserving the alpha channels
+//            Graphics g = combined.getGraphics();
+//            g.drawImage(img, 0, 0, null);
+//            g.drawImage(cross, 0, 0, null);
+//
+//
+            Graphics2D g = combined.createGraphics();
+            g.setComposite(AlphaComposite.Clear);
+            g.fillRect(0,0, w, h);
+            g.setComposite(AlphaComposite.SrcOver);
+            g.drawImage(img, 0, 0, null);
+            float alpha = 0.50f;
+            g.setComposite(AlphaComposite.SrcOver.derive(alpha));
+            g.drawImage(cross, 0, 0, null);
+            g.dispose();
+            return combined;
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public BufferedImage joinBufferedImage(BufferedImage img1,

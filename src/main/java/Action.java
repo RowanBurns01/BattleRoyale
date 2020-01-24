@@ -108,7 +108,7 @@ public class Action {
                     if (one != null) {
 
                         Player two = chooseRandomPerson(one, totalPlayers);
-                        if(0 == r.generateNumber(8)){
+                        if(0 == r.generateNumber(10)){
                             hourLog.add(one.getName() + " has fled from the fight!");
                             two = null;
                             unavailable.add(one);
