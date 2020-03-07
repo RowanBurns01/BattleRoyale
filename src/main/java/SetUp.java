@@ -7,30 +7,36 @@ public class SetUp {
     public static void main(String args[]){
 
         List<Player> contestants = new ArrayList<>(Arrays.asList(
-                new Player("Rowan", "Burns"),
-                new Player("Jack","Paterson"),
-                new Player("Rutkay", "Alici"),
-                new Player("Sam", "Eames"),
-                new Player("Parham", "Raoof"),
-                new Player("Hugo","Treloar"),
-                new Player("Jonah", "Kingery"),
-                new Player("Will", "Perry"),
-                new Player("Justin", "Ford"),
-                new Player("Daniel", "Buffa"),
-                new Player("Tom", "Williams"),
-                new Player("Matt", "Sullivan"),
-                new Player("Naren","Iyer"),
-                new Player("Josh", "Lorschy"),
-                new Player("Tim", "Hughes"),
-                new Player("Will", "Lind"),
-                new Player("Jay", "Kotecha"),
-                new Player("Ed", "Sisson")
+                new Player("Rowan", "Burns"),     // 1
+                new Player("Jack","Paterson"),    // 2
+                new Player("Rutkay", "Alici"),    // 3
+                new Player("Sam", "Eames"),       // 4
+                new Player("Parham", "Raoof"),    // 5
+                new Player("Hugo","Treloar"),     // 6
+                new Player("Jonah", "Kingery"),   // 7
+                new Player("Will", "Perry"),      // 8
+                new Player("Justin", "Ford"),     // 9
+                new Player("Daniel", "Buffa"),    // 10
+                new Player("Tom", "Williams"),    // 11
+                new Player("Matt", "Sullivan"),   // 12
+                new Player("Naren","Iyer"),       // 13
+                new Player("Josh", "Lorschy"),    // 14
+                new Player("Tim", "Hughes"),      // 15
+                new Player("Will", "Lind"),       // 16
+                new Player("Jay", "Kotecha"),     // 17
+                new Player("Ed", "Sisson"),       // 18
+                new Player("Joseph", "McGrath"),  // 19
+                new Player("Ben", "Gilmore"),     // 20
+                new Player("Jarrod", "Chisholm"), // 21
+                new Player("Oscar", "Pursey"),     // 22
+                new Player("Xavier", "Morris"),   // 23
+                new Player("Marcus", "Valastro")     // 24
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
-                new Weapon("Ballistic Knife", 3),
-                new Weapon("Serrated Frisbee", 2),
-                new Weapon("Diamond Sword", 4)
+                new Weapon("Ballistic Knife", 2),
+                new Weapon("Throwing Axe", 3),
+                new Weapon("Bow and Arrow", 4)
         ));
 
         Simulation game = new Simulation(contestants, weaponry);

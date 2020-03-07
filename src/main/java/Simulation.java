@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Simulation {
@@ -120,6 +121,7 @@ public class Simulation {
     public void configure() {
         String msg = "\nWelcome to the first annual Hunger Games!\nYou have been chosen to represent your district.\nThis is a fight to the death, there will only be one survivor...\n\nThe tributes from each district are:";
         int count = 1;
+        Collections.shuffle(contestants);
         for (Player p: contestants){
             while(!p.hasLivingPartner()){
                 Player partner = a.chooseRandomPerson(p, contestants);

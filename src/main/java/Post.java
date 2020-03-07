@@ -10,7 +10,7 @@ public class Post {
 
     private FacebookClient facebookClient;
     private List<Player> players;
-    private String pageAccessToken = "EAAi8qZBaTG6kBAOl3JBZAmwGeRiqRfntVj0M4VO3mzF2vI1voA2QasRrLcGzywiIWONlcUneR8IFgls10GtXTtHVIDpB67jIWI9QcJGKuiQvkWAVjQvs9WeoKwon1h6dx8JX7yL480clKiddyFw8qqWVsGYAT6t5MpMyTky8l1TYsOZCDrzLJHoFiptOZA0ZD";
+    private String pageAccessToken = "EAAi8qZBaTG6kBAHBrhwLG1nJU2dZB9YlukQBZCgQJGajNNJtFZBUeKVZBg8fwRsebp1QTTZBRGwvS1nKrhLYvpgH51ZA2rxsES887po9qqkTZBQVSOgAC5PELZCDdSuEpwx7Bny5DnDCs6ARZAZAhybWZCxshx1H8qfy15PxfbJZBZAcBzCHR0edyYxxraoL0Tq5k13epqzjUKxNO5BwZDZD";
     private BufferedImage finalImage;
     private String flag;
     private Day d;
@@ -22,31 +22,30 @@ public class Post {
         this.facebookClient = new DefaultFacebookClient(pageAccessToken, Version.LATEST);
     }
 
+    public void makePost(String msg){
+        System.out.println("\n"  + d.getDate().toString() + msg);
+        postCount();
+        GraphResponse publishPhotoResponse = facebookClient.publish("me/photos", GraphResponse.class,
+                BinaryAttachment.with("HourlyPost",imageInByte),
+                Parameter.with("message", msg),
+                Parameter.with("published", false),
+                Parameter.with("scheduled_publish_time", d.getDate().getTime() /1000));
+    }
+
+    public void makeTextPost(String msg){
+        System.out.println("\n" + d.getDate().toString() + msg);
+        postCount();
+        GraphResponse publishMessageResponse = facebookClient.publish("me/feed", GraphResponse.class,
+                Parameter.with("message", msg),
+                Parameter.with("published", false),
+                Parameter.with("scheduled_publish_time", d.getDate()));
+    }
+
     public void postCount(){
         count ++;
         System.out.println(count);
     }
-
-    public void makePost(String msg){
-        System.out.println("\n"  + d.getDate().toString() + msg);
-        count ++;
-//        postCount();
-//        GraphResponse publishPhotoResponse = facebookClient.publish("me/photos", GraphResponse.class,
-//                BinaryAttachment.with("HourlyPost", imageInByte),
-//                Parameter.with("message", msg));
-//                Parameter.with("published", false),
-//                Parameter.with("scheduled_publish_time", d.getDate().getTime() /1000));
-    }
-
-    public void makeTextPost(String msg){
-//        System.out.println("\n" + d.getDate().toString() + msg);
-//        postCount();
-//        GraphResponse publishMessageResponse = facebookClient.publish("me/feed", GraphResponse.class,
-//                Parameter.with("message", msg));
-//                Parameter.with("published", false),
-//                Parameter.with("scheduled_publish_time", d.getDate()));
-    }
-
+    
     public void clear(){
         if(players != null){
             players.clear();
@@ -78,9 +77,14 @@ public class Post {
             }
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            ImageIO.write( finalImage, "png", baos );
-            ImageIO.write( finalImage, "png", new File( "C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\post"+count+".png"));
-                    baos.flush();
+
+            // This writes to baos
+            ImageIO.write( finalImage, "png", baos );
+
+            // This writes photos to resources
+//            ImageIO.write( finalImage, "png", new File( "C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\post"+count+".png"));
+
+            baos.flush();
             imageInByte = baos.toByteArray();
             baos.close();
 

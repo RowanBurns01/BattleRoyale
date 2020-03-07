@@ -108,7 +108,7 @@ public class Action {
                     if (one != null) {
 
                         Player two = chooseRandomPerson(one, totalPlayers);
-                        if(0 == r.generateNumber(10)){
+                        if(0 == r.generateNumber(20)){
                             hourLog.add(one.getName() + " has fled from the fight!");
                             two = null;
                             unavailable.add(one);
@@ -145,7 +145,7 @@ public class Action {
                             unavailable.add(loser);
                             Weapon w = takeWeapon(winner, loser);
                             if(w!= null){
-                                hourLog.add("From "+ loser.getName() +"'s dead body, " + winner.getName() + " has acquired a " + w.getName() + ".");
+                                hourLog.add("From "+ loser.getName() +"'s body, " + winner.getName() + " has acquired a " + w.getName() + ".");
                             }
                         }
                     }
@@ -195,7 +195,7 @@ public class Action {
             listPlayers.add(winner);
             listPlayers.add(loser);
             if(w!= null){
-                hourLog.add("From "+ loser.getName() +"'s dead body, " + winner.getName() + " has acquired a " + w.getName() + ".");
+                hourLog.add("From "+ loser.getName() +"'s body, " + winner.getName() + " has acquired a " + w.getName() + ".");
             }
         }
     }
