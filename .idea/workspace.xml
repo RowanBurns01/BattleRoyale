@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f97a53f1-b2ae-45f4-a748-9d319ae6ffea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HungerGames.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/BenGilmore.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Bow and Arrow.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/JarrodChisholm.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/JosephMcGrath.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MarcusValastro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/OscarPursey.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Throwing Axe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/XavierMorris.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/Random.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Duel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/GroupFight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Steal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scenarios.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -19,41 +21,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Action.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HungerGames.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Action.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Day.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Random.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JackPaterson.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/JackPaterson.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/post9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Simulation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Weapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/MattSullivan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/MattSullivan.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Action.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Random.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SetUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JackPaterson.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/JackPaterson.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SamEames.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SamEames.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MattSullivan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MattSullivan.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +93,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Studies/2020/SOFT3202/TestingAssignmentA1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -120,15 +106,18 @@
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+      <recent name="java" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-      <recent name="java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -189,6 +178,12 @@
       <workItem from="1579848628287" duration="6692000" />
       <workItem from="1583118686634" duration="2263000" />
       <workItem from="1583469845611" duration="15238000" />
+      <workItem from="1583624854468" duration="94000" />
+      <workItem from="1583654957286" duration="4682000" />
+      <workItem from="1583723565118" duration="92000" />
+      <workItem from="1583746928875" duration="11943000" />
+      <workItem from="1583991143094" duration="7123000" />
+      <workItem from="1584155498094" duration="15009000" />
     </task>
     <servers />
   </component>

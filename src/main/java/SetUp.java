@@ -1,3 +1,7 @@
+import model.Simulation;
+import model.entities.Weapon;
+import model.entities.Player;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -6,6 +10,7 @@ public class SetUp {
 
     public static void main(String args[]){
 
+        // Catch phrases
         List<Player> contestants = new ArrayList<>(Arrays.asList(
                 new Player("Rowan", "Burns"),     // 1
                 new Player("Jack","Paterson"),    // 2
