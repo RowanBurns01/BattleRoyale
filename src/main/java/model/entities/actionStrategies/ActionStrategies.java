@@ -5,5 +5,5 @@ import model.Simulation;
 
 public abstract class ActionStrategies {
 
-    public abstract void action(Player p, Player second, Simulation s);
+    public abstract void action(Player p, Simulation s);
 }

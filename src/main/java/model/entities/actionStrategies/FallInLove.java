@@ -11,9 +11,13 @@ import java.util.List;
 public class FallInLove extends ActionStrategies {
 
     @Override
-    public void action(Player chosen, Player lover, Simulation s ) {
+    public void action(Player chosen, Simulation s ) {
         List<String> hourLog = s.getHourLog();
         Post post = s.getPost();
+        Player lover =null;
+        if(chosen.hasAnAlly()){
+            lover = chosen.chooseRandomAlly();
+        }
 
         if(chosen.getLover() == null){
             if(lover != null){

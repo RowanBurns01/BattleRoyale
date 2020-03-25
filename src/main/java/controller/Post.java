@@ -19,7 +19,7 @@ public class Post {
     private String flag;
     private Day d;
     private byte[] imageInByte;
-    private int count = 0;
+    private int count = 1;
 
     public Post(Day d){
         this.d = d;
@@ -28,7 +28,7 @@ public class Post {
 
     public void makePost(String msg){
         System.out.println("\n"  + d.getDate().toString() + msg);
-//        postCount();
+        postCount();
 //        GraphResponse publishPhotoResponse = facebookClient.publish("me/photos", GraphResponse.class,
 //                BinaryAttachment.with("HourlyPost",imageInByte),
 //                Parameter.with("message", msg),
@@ -38,7 +38,6 @@ public class Post {
 
     public void makeTextPost(String msg){
         System.out.println("\n" + d.getDate().toString() + msg);
-//        postCount();
 //        GraphResponse publishMessageResponse = facebookClient.publish("me/feed", GraphResponse.class,
 //                Parameter.with("message", msg),
 //                Parameter.with("published", false),
@@ -69,11 +68,15 @@ public class Post {
             finalImage = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(0).getImagePath()));
             if(!players.get(0).getAlive()){
                 finalImage = overlayCross(finalImage);
+            } else if (flag == "death"){
+                finalImage = overlayHealth(finalImage,players.get(0));
             }
             for(int i = 1; i < players.size(); i++){
-                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(i).getImagePath()));
+                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(i).getImagePath())); //
                 if(!players.get(i).getAlive()){
                     img2 = overlayCross(img2);
+                } else if (flag == "death") {
+                    img2 = overlayHealth(img2,players.get(i));
                 }
                 finalImage = joinBufferedImage(finalImage, img2);
             }
@@ -85,10 +88,10 @@ public class Post {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
             // This writes to baos
-            ImageIO.write( finalImage, "png", baos );
+//            ImageIO.write( finalImage, "png", baos );
 
-            // This writes photos to resources
-//            ImageIO.write( finalImage, "png", new File( "C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\post"+count+".png"));
+            // This writes photos to output
+            ImageIO.write( finalImage, "png", new File( "C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\output\\post"+count+".png"));
 
             baos.flush();
             imageInByte = baos.toByteArray();
@@ -124,6 +127,33 @@ public class Post {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public BufferedImage overlayHealth(BufferedImage img,Player p){
+
+        int w = img.getWidth();
+
+        BufferedImage combined = new BufferedImage(w, w, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = combined.createGraphics();
+        g.drawImage(img, 0, 0, null);
+        g.setColor(Color.white);
+        g.fillRect(20,420,460,70);
+        g.setColor(Color.darkGray);
+        g.fillRect(30,430,440,50);
+
+        double percentage = (double)p.getHealth()/(double)p.getTotalHealth();
+        long width = Math.round( percentage*440.0);
+        if(percentage> 0.5){
+            g.setColor(new Color(154,255,167));
+        }else if(percentage>0.2){
+            g.setColor(new Color(255, 198, 52));
+        } else {
+            g.setColor(new Color(255, 47, 49));
+        }
+        g.fillRect(30,430,(int)width,50);
+
+        return combined;
+
     }
 
     public BufferedImage joinBufferedImage(BufferedImage img1,

@@ -11,7 +11,7 @@ import java.util.List;
 public class AccidentalDeath extends ActionStrategies{
 
     @Override
-    public void action(Player p, Player fill, Simulation s) {
+    public void action(Player p, Simulation s) {
         Simulation simulation = s;
         List<String> hourLog = s.getHourLog();
         Day d = s.getDay();
@@ -26,6 +26,7 @@ public class AccidentalDeath extends ActionStrategies{
                 hourLog.add(p.getName() + " has been swept away in a flood and has drowned.");
                 break;
         }
+        p.removeAlliesAsIsDead();
         p.setAlive(false);
         post.addPlayer(p);
     }

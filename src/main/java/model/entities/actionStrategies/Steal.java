@@ -3,6 +3,7 @@ package model.entities.actionStrategies;
 import model.entities.Player;
 import controller.Post;
 import model.Simulation;
+import model.entities.Random;
 import model.entities.Weapon;
 
 import java.util.ArrayList;
@@ -12,10 +13,11 @@ import java.util.List;
 public class Steal extends ActionStrategies {
 
     @Override
-    public void action(Player p, Player two, Simulation s) {
+    public void action(Player p, Simulation s) {
         List<String> hourLog = s.getHourLog();
         Post post = s.getPost();
-
+        Random r = new Random();
+        Player two = r.chooseRandomPerson(p,s.getContestants());
         boolean stolen = false;
         int i = 0;
         while (!stolen && i < 50) {

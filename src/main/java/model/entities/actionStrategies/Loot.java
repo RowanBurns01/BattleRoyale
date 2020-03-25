@@ -13,7 +13,7 @@ public class Loot extends ActionStrategies {
     Random r = new Random();
 
     @Override
-    public void action(Player p, Player second, Simulation s) {
+    public void action(Player p, Simulation s) {
         List<Weapon> weaponry = s.getWeaponry();
         Post post = s.getPost();
         List<String> hourLog = s.getHourLog();

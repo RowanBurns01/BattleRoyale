@@ -5,6 +5,7 @@ import model.entities.actionStrategies.ActionStrategies;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Player{
@@ -49,8 +50,8 @@ public class Player{
         this.weapons = new ArrayList<>();
     }
 
-    public void think(ActionStrategies actionStrategies, Player opposition, Simulation s) {
-        actionStrategies.action(this, opposition, s);
+    public void think(ActionStrategies actionStrategies, Simulation s) {
+        actionStrategies.action(this, s);
     }
 
     public Weapon getOneWeapon(){
@@ -103,14 +104,14 @@ public class Player{
         this.defence = defence;
         this.attack = attack;
         this.level ++;
-        this.health = totalHealth;
+        this.health += health;
     }
 
     public boolean attack(Player receiver) {
         float damage = ((((float) level)*2/5)+1) * ((((float) attack) + getOneWeapon().getValue())/(((float)defence)/10));
         int rounded = Math.round(damage);
         //dodge
-        if(receiver.getDexterity() < r.generateNumber(100)){
+        if(receiver.getDexterity() > r.generateNumber(100)){
             return false;
         }
         return receiver.setHP(rounded);
@@ -179,6 +180,14 @@ public class Player{
         return alliance.contains(p);
     }
 
+    public void removeAlly(Player p){
+        this.getAllies().remove(p);
+    }
+
+    public Player chooseRandomAlly(){
+        return alliance.get(r.generateNumber(alliance.size()-1));
+    }
+
     public boolean hasAnAlly(){
         return !this.getAllies().isEmpty();
     }
@@ -187,13 +196,20 @@ public class Player{
         this.alliance.add(p);
     }
 
+    public void removeAlliesAsIsDead(){
+        for(Player p: alliance){
+            p.removeAlly(this);
+        }
+        this.getAllies().clear();
+    }
+
     public List<Player> getAllies() {
         return this.alliance;
     }
 
     public boolean incKillCount() {
         this.killCount++;
-        if(killCount == 2|| killCount == 5|| killCount == 8){
+        if(killCount == 3|| killCount == 6|| killCount == 9){
             return true;
         }
         return false;

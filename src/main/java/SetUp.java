@@ -33,9 +33,30 @@ public class SetUp {
                 new Player("Joseph", "McGrath"),  // 19
                 new Player("Ben", "Gilmore"),     // 20
                 new Player("Jarrod", "Chisholm"), // 21
-                new Player("Oscar", "Pursey"),     // 22
+                new Player("Oscar", "Pursey"),    // 22
                 new Player("Xavier", "Morris"),   // 23
-                new Player("Marcus", "Valastro")     // 24
+                new Player("Marcus", "Valastro")  // 24
+//                new Player("Tim", "Richmond"),    // 25
+//                new Player("Seb", "Galetto"),     // 26
+//                new Player("Jacob","Lerner"),     // 27
+//                new Player("Mack", "Perry"),      // 28
+//                new Player("Jake", "Slaytor"),    // 29
+//                new Player("Nick", "Hudson"),     // 30
+//                new Player("James", "Hudson"),    // 31
+//                new Player("Jack", "Woods"),      // 32
+//                new Player("Angus", "Neale"),     // 33
+//                new Player("Hugh", "Farrow"),     // 34
+//                new Player("Hugh","MacDiarmid"),  // 35
+//                new Player("John-Edward", "Sparksman"),  // 36
+//                new Player("Tom", "Langford"),    // 37
+//                new Player("James", "O'Neale"),   // 38
+//                new Player("Josh", "Walker"),     // 39
+//                new Player("Riley", "Barron"),    // 40
+//                new Player("Harry", "Forsythe"),  // 41
+//                new Player("Hugo", "Perchard"),   // 42
+//                new Player("Henry", "Watson"),    // 43
+//                new Player("Alex","Ng")           // 44
+
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(

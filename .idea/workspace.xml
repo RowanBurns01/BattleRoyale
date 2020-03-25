@@ -2,17 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f97a53f1-b2ae-45f4-a748-9d319ae6ffea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/Random.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Duel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/GroupFight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Steal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/scenarios.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FormAllegiance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/output/post9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,25 +34,32 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HungerGames.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Day.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Post.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Random.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Simulation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Weapon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MattSullivan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/MattSullivan.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Random.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/Post.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Simulation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/Random.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/Random.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/AccidentalDeath.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/AccidentalDeath.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/ActionStrategies.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/ActionStrategies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Duel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Duel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Encounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Encounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FallInLove.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FallInLove.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/GroupFight.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Loot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Loot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Steal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Steal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SetUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MattSullivan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MattSullivan.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Random.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Random.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Duel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Duel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/GroupFight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/GroupFight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Steal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Steal.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +113,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Studies/2020/SOFT3202/TestingAssignmentA1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -183,7 +203,8 @@
       <workItem from="1583723565118" duration="92000" />
       <workItem from="1583746928875" duration="11943000" />
       <workItem from="1583991143094" duration="7123000" />
-      <workItem from="1584155498094" duration="15009000" />
+      <workItem from="1584155498094" duration="15145000" />
+      <workItem from="1585121543344" duration="15082000" />
     </task>
     <servers />
   </component>

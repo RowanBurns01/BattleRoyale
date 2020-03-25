@@ -43,44 +43,47 @@ public class Simulation{
         Collections.shuffle(contestants);
         for(Player p : contestants){
             if(!eventOccurred){
-                Player second = r.chooseRandomPerson(p, contestants);
-
                 if( Math.random() < 0.25 * scaleDay/contestants.size()){
                     ActionStrategies encounter = new Encounter();
-                    p.think(encounter, second, this);
+                    p.think(encounter, this);
                     eventOccurred = true;
                     flag = "death";
-//                } else if(Math.random() < 0.25 * scaleDay/contestants.size()){
-//                    ActionStrategies duel = new Duel();
-//                    p.think(duel, second, this);
-//                    eventOccurred = true;
-//                    flag = "death";
-                } else if( Math.random() < 0.01 * scaleDay){
-                    ActionStrategies loot = new Loot();
-                    p.think(loot, p, this);
-                    eventOccurred = true;
-                    flag = "item";
-                } else if (Math.random() < 0.003 * scaleNight){
+                } else if( Math.random() < 0.01 * scaleDay) {
+                    if(!weaponry.isEmpty()){
+                        ActionStrategies loot = new Loot();
+                        p.think(loot, this);
+                        eventOccurred = true;
+                        flag = "item";
+                    }
+                } else if( Math.random() < 0.01 * scaleDay && d.getDay() < 3){
+                    if(p.getAllies().size() <= 4){
+                        ActionStrategies allyUp = new FormAllegiance();
+                        p.think(allyUp,this);
+                        eventOccurred = true;
+                        flag = "allyUp";
+                    }
+                } else if (Math.random() < 0.003 * scaleNight && d.getDay() > 2){
                     if(contestants.size() > 2 && !tokenSuicideOccured) {
                         tokenSuicideOccured = true;
                         ActionStrategies accidentalDeath = new AccidentalDeath();
-                        p.think(accidentalDeath, p, this);
+                        p.think(accidentalDeath, this);
                         eventOccurred = true;
-                        flag = "death";
+                        flag = "accident";
                     }
-                } else if (Math.random() < 0.001 * scaleDay){
+                } else if (Math.random() < 0.001 * scaleDay && d.getDay() > 2){
                     ActionStrategies steal = new Steal();
-                    p.think(steal, second, this);
+                    p.think(steal, this);
                     eventOccurred = true;
                     flag = "item";
-                } else if (Math.random() < 0.001){
+                } else if (Math.random() < 0.001 && d.getDay() > 2){
                     ActionStrategies fallInLove = new FallInLove();
-                    p.think( fallInLove, second, this);
+                    p.think( fallInLove, this);
                     eventOccurred = true;
                     flag = "love";
                 }
             }
         }
+
 
         // Remove dead
         for(Player k: allContestants){

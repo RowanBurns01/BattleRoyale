@@ -1,5 +1,6 @@
 package model.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Random {
@@ -12,24 +13,30 @@ public class Random {
         return rand;
     }
 
-    public Player chooseRandomPerson(Player p, List<Player> list){
+    public Player chooseRandomPerson(Player p, List<Player> old){
         int i = 0;
         while(i <10){
-            Player person = list.get(generateNumber(list.size()-1));
-            if(!person.getFullName().equals(p.getFullName()) && person.getAvailability()) {
-                return person;
+            List<Player> list = new ArrayList<>(old);
+            list.remove(p);
+            if(!list.isEmpty()){
+                Player person = list.get(generateNumber(list.size()-1));
+                if(person.getAvailability()){
+                    return person;
+                }
             }
             i++;
         }
         return null;
     }
 
-    public Player chooseRandomPerson(List<Player> noGoodList, List<Player> list){
+    public Player chooseRandomPerson(List<Player> noGoodList, List<Player> old){
         int i = 0;
         while(i <10){
-            Player person = list.get(generateNumber(list.size()-1));
-            for(Player p : noGoodList){
-                if(!person.getFullName().equals(p.getFullName()) && person.getAvailability()) {
+            List<Player> list = new ArrayList<>(old);
+            list.removeAll(noGoodList);
+            if(!list.isEmpty()){
+                Player person = list.get(generateNumber(list.size()-1));
+                if(person.getAvailability()){
                     return person;
                 }
             }
