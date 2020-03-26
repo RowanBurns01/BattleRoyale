@@ -41,8 +41,7 @@ public class FormAllegiance extends ActionStrategies {
             all.addAll(teamOne);
             all.addAll(teamTwo);
 
-            if(all.size() > 8){
-                System.out.println("size to big");
+            if(all.size() > 6){
                 return;
             }
 
@@ -53,16 +52,33 @@ public class FormAllegiance extends ActionStrategies {
                 }
             }
 
-            String message = "An allegiance has formed between: ";
-            for(Player fighter : teamOne) {
-                message += fighter.getName() + ", ";
-            }
-            message += "and ";
+            String message = "";
 
-            for(Player fighter : teamTwo) {
-                message += fighter.getName() + ", ";
+            if(teamOne.size() == 1){
+                message += teamOne.get(0).getName();
+                message += " has formed an allegiance with ";
+            } else {
+                for(int i = 0; i< teamOne.size()-1 ; i++) {
+                    message += teamOne.get(i).getName() + ", ";
+                }
+                message += "and";
+                message = message.replace(", and", " and");
+                message += String.format(" %s have formed an allegiance with ",teamOne.get(teamOne.size()-1).getName());
             }
-            hourLog.add(message.replace(", .", "."));
+
+
+            if(teamTwo.size() == 1){
+                message += teamTwo.get(0).getName() + ".";
+            } else {
+                for(int i = 0; i< teamTwo.size()-1 ; i++) {
+                    message += teamTwo.get(i).getName() + ", ";
+                }
+                message += "and";
+                message = message.replace(", and", " and");
+                message += String.format(" %s.",teamTwo.get(teamTwo.size()-1).getName());
+            }
+
+            hourLog.add(message);
             post.addPlayers(all);
 
         }

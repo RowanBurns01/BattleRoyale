@@ -55,13 +55,11 @@ public class Simulation{
                         eventOccurred = true;
                         flag = "item";
                     }
-                } else if( Math.random() < 0.01 * scaleDay && d.getDay() < 3){
-                    if(p.getAllies().size() <= 4){
-                        ActionStrategies allyUp = new FormAllegiance();
-                        p.think(allyUp,this);
-                        eventOccurred = true;
-                        flag = "allyUp";
-                    }
+                } else if( Math.random() < 0.01 * scaleDay && d.getDay() == 1){
+                    ActionStrategies allyUp = new FormAllegiance();
+                    p.think(allyUp,this);
+                    eventOccurred = true;
+                    flag = "allyUp";
                 } else if (Math.random() < 0.003 * scaleNight && d.getDay() > 2){
                     if(contestants.size() > 2 && !tokenSuicideOccured) {
                         tokenSuicideOccured = true;
@@ -70,12 +68,12 @@ public class Simulation{
                         eventOccurred = true;
                         flag = "accident";
                     }
-                } else if (Math.random() < 0.001 * scaleDay && d.getDay() > 2){
+                } else if (Math.random() < 0.003 * scaleNight && d.getDay() > 2){
                     ActionStrategies steal = new Steal();
                     p.think(steal, this);
                     eventOccurred = true;
                     flag = "item";
-                } else if (Math.random() < 0.001 && d.getDay() > 2){
+                } else if (Math.random() < 0.003 * scaleNight && d.getDay() > 2){
                     ActionStrategies fallInLove = new FallInLove();
                     p.think( fallInLove, this);
                     eventOccurred = true;
@@ -124,8 +122,11 @@ public class Simulation{
     public void run(){
 
         firstPost = true;
+        if(d.getDay() == 1){
+            hourZero();
+        }
 
-        // arena.Day Loop
+        // Loop
         while(d.getHour()<24){
             hour();
         }
@@ -135,18 +136,79 @@ public class Simulation{
         d.nextDay();
     }
 
+    public void hourZero() {
+
+        double scaleFirstHour = 2;
+
+        // Fight Action
+
+        while(d.getMinute() < 60){
+            boolean eventOccurred = false;
+            String flag = "";
+            scaleFirstHour *= 0.9;
+            Collections.shuffle(contestants);
+            for(Player p : contestants){
+                if(!eventOccurred){
+                    if( Math.random() < 0.25 * scaleFirstHour/contestants.size()){
+                        ActionStrategies encounter = new Encounter();
+                        p.think(encounter, this);
+                        eventOccurred = true;
+                        flag = "death";
+                    } else if( Math.random() < 0.01 *5* scaleFirstHour) {
+                        if(!weaponry.isEmpty()){
+                            ActionStrategies loot = new Loot();
+                            p.think(loot, this);
+                            eventOccurred = true;
+                            flag = "item";
+                        }
+                    } else if( Math.random() < 0.01 * scaleFirstHour && d.getDay() < 3){
+                        ActionStrategies allyUp = new FormAllegiance();
+                        p.think(allyUp,this);
+                        eventOccurred = true;
+                        flag = "allyUp";
+                    }
+                }
+            }
+
+            // Remove dead
+            for(Player k: allContestants){
+                if(!k.getAlive()){
+                    contestants.remove(k);
+                }
+            }
+            facebookPost(flag);
+            checkIfFinished();
+            d.nextMinute();
+            hourLog.clear();
+            for(Player p: contestants){
+                p.setAvailable();
+            }
+        }
+        d.resetMinute();
+        d.nextHour();
+    }
+
     public void configure() {
         String msg = "\nWelcome to the first annual Hunger Games!\nYou have been chosen to represent your district.\nThis is a fight to the death, there will only be one survivor...\n\nThe tributes from each district are:";
         int count = 1;
         Collections.shuffle(contestants);
         for (Player p: contestants){
-            while(!p.hasAnAlly()){
+            while(!p.hasDistrictPartner()){
                 Player partner = r.chooseRandomPerson(p, contestants);
-                if(!partner.hasAnAlly()){
-                    p.addAlly(partner);
-                    msg += "\nDistrict "+ count+ ": " + p.getFullName() + " & " + p.getAllies().get(0).getFullName() + ".";
+                if(!partner.hasDistrictPartner()){
+                    String allies = "";
+                    if(1 == r.generateNumber(1)){
+                        p.addAlly(partner);
+                        partner.addAlly(p);
+                        allies = " [Allies]";
+                    }
+                    p.setDistrictPartner(partner);
+                    p.setDistrict(count);
+                    partner.setDistrictPartner(p);
+                    partner.setDistrict(count);
+                    msg += "\nDistrict "+ count+ ": " + p.getFullName() + " & " + partner.getFullName() + "."+ allies;
                     count ++;
-                    partner.addAlly(p);
+
                 }
             }
             allContestants.add(p);

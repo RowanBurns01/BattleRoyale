@@ -27,8 +27,10 @@ public class Post {
     }
 
     public void makePost(String msg){
-        System.out.println("\n"  + d.getDate().toString() + msg);
-        postCount();
+
+//        System.out.print("\n" +String.format("Post #%s\n",count)  + d.getDate().toString());
+        System.out.println(msg);
+        postInc();
 //        GraphResponse publishPhotoResponse = facebookClient.publish("me/photos", GraphResponse.class,
 //                BinaryAttachment.with("HourlyPost",imageInByte),
 //                Parameter.with("message", msg),
@@ -37,16 +39,16 @@ public class Post {
     }
 
     public void makeTextPost(String msg){
-        System.out.println("\n" + d.getDate().toString() + msg);
+//        System.out.print("\n" + d.getDate().toString());
+        System.out.println(msg);
 //        GraphResponse publishMessageResponse = facebookClient.publish("me/feed", GraphResponse.class,
 //                Parameter.with("message", msg),
 //                Parameter.with("published", false),
 //                Parameter.with("scheduled_publish_time", d.getDate()));
     }
 
-    public void postCount(){
+    public void postInc(){
         count ++;
-        System.out.println(count);
     }
     
     public void clear(){
@@ -65,14 +67,14 @@ public class Post {
 
     public void combinePictures() {
         try {
-            finalImage = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(0).getImagePath()));
+            finalImage = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\Tributes\\" + players.get(0).getImagePath()));
             if(!players.get(0).getAlive()){
                 finalImage = overlayCross(finalImage);
             } else if (flag == "death"){
                 finalImage = overlayHealth(finalImage,players.get(0));
             }
             for(int i = 1; i < players.size(); i++){
-                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(i).getImagePath())); //
+                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\Tributes\\" + players.get(i).getImagePath()));
                 if(!players.get(i).getAlive()){
                     img2 = overlayCross(img2);
                 } else if (flag == "death") {
@@ -81,7 +83,7 @@ public class Post {
                 finalImage = joinBufferedImage(finalImage, img2);
             }
             if(flag == "item"){
-                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\" + players.get(0).getWeapons().get(players.get(0).getWeapons().size()-1).getImagePath()));
+                BufferedImage img2 = ImageIO.read(new File("C:\\Users\\rljb\\Desktop\\Organised Folders\\GitHub\\Royale\\src\\main\\resources\\Items\\" + players.get(0).getWeapons().get(players.get(0).getWeapons().size()-1).getImagePath()));
                 finalImage = joinBufferedImage(finalImage, img2);
             }
 
@@ -137,12 +139,20 @@ public class Post {
         Graphics2D g = combined.createGraphics();
         g.drawImage(img, 0, 0, null);
         g.setColor(Color.white);
-        g.fillRect(20,420,460,70);
+        int x = 40;
+        g.fillRect(x,430,500-2*x,x);
         g.setColor(Color.darkGray);
-        g.fillRect(30,430,440,50);
+        g.fillRect(x+5,435,500-2*(x+5),x-10);
 
         double percentage = (double)p.getHealth()/(double)p.getTotalHealth();
-        long width = Math.round( percentage*440.0);
+        long width = Math.round( percentage*410.0);
+
+        g.setColor(Color.white);
+        Font font = new Font("Serif", Font.BOLD, 24);
+        g.setFont(font);
+        g.drawString(String.format("District: %s",p.getDistrict()),x+10,395);
+        g.drawString(String.format("HP: %s/%s",p.getHealth(),p.getTotalHealth()),x+10,420);
+
         if(percentage> 0.5){
             g.setColor(new Color(154,255,167));
         }else if(percentage>0.2){
@@ -150,7 +160,7 @@ public class Post {
         } else {
             g.setColor(new Color(255, 47, 49));
         }
-        g.fillRect(30,430,(int)width,50);
+        g.fillRect(x+5,435,(int)width,x-10);
 
         return combined;
 

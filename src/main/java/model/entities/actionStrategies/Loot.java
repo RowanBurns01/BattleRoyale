@@ -18,7 +18,7 @@ public class Loot extends ActionStrategies {
         Post post = s.getPost();
         List<String> hourLog = s.getHourLog();
 
-        if(!weaponry.isEmpty()) {
+        if(!weaponry.isEmpty() && p.getWeapons().isEmpty()) {
             int num = r.generateNumber(weaponry.size()-1);
             Weapon w = weaponry.get(num);
             if(w.getValue() != 0) {

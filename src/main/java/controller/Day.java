@@ -7,16 +7,18 @@ public class Day {
 
     private int day;
     private int hour;
+    private int minute;
 
     public Day(){
         this.day = 1;
         this.hour = 8;
+        this.minute = 0;
     }
 
     public Date getDate(){
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY,hour + 24*day);
-        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.MINUTE,minute);
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
         Date d = cal.getTime();
@@ -31,6 +33,18 @@ public class Day {
         }
     }
 
+    public void nextMinute() {
+       this.minute ++;
+    }
+
+    public int getMinute(){
+        return this.minute;
+    }
+
+    public void resetMinute(){
+        this.minute = 0;
+    }
+
     public void resetHour(){
         this.hour = 0;
     }
@@ -39,15 +53,24 @@ public class Day {
         return this.hour;
     }
 
+    public String getStringMinute(){
+        if(minute < 10){
+            return "0" + minute;
+        } else {
+            return Integer.toString(minute);
+        }
+    }
+
     public String getTimeOfDay() {
+
         if(hour == 0){
             return "Midnight";
         } else if (hour == 12){
             return "Noon";
         } else if (hour > 11){
-            return hour-12 + ":00pm";
+            return hour-12 + ":" + getStringMinute()+ "pm";
         } else {
-            return hour + ":00am";
+            return hour + ":" + getStringMinute()+ "am";
         }
     }
 

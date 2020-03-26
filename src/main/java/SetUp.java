@@ -10,7 +10,6 @@ public class SetUp {
 
     public static void main(String args[]){
 
-        // Catch phrases
         List<Player> contestants = new ArrayList<>(Arrays.asList(
                 new Player("Rowan", "Burns"),     // 1
                 new Player("Jack","Paterson"),    // 2
@@ -56,13 +55,20 @@ public class SetUp {
 //                new Player("Hugo", "Perchard"),   // 42
 //                new Player("Henry", "Watson"),    // 43
 //                new Player("Alex","Ng")           // 44
+                // Gavin
+                // Ethan Tien
+
 
         ));
 
         List<Weapon> weaponry = new ArrayList<>(Arrays.asList(
-                new Weapon("Ballistic Knife", 2),
-                new Weapon("Throwing Axe", 3),
-                new Weapon("Bow and Arrow", 4)
+                new Weapon("Bow and Arrow"),
+                new Weapon("Sword"),
+                new Weapon("Spear"),
+                new Weapon("Throwing Knives"),
+                new Weapon("Machete"),
+                new Weapon("Throwing Axe"),
+                new Weapon("Trident")
         ));
 
         Simulation game = new Simulation(contestants, weaponry);

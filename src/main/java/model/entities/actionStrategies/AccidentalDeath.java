@@ -26,7 +26,7 @@ public class AccidentalDeath extends ActionStrategies{
                 hourLog.add(p.getName() + " has been swept away in a flood and has drowned.");
                 break;
         }
-        p.removeAlliesAsIsDead();
+        p.removeAllAllies();
         p.setAlive(false);
         post.addPlayer(p);
     }

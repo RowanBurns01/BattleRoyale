@@ -23,8 +23,10 @@ public class Player{
 
     private List<Player> alliance;
     private Player lover;
-
     private Player killer;
+
+    private Player districtPartner;
+    private int district;
 
     private List<Weapon> weapons;
     private Weapon lastUsedWeapon;
@@ -41,10 +43,12 @@ public class Player{
         this.level = 1;
         this.name = name;
         this.lastName = lastName;
+        this.district = 0;
         this.killCount = 0;
         this.lover = null;
         this.killer = null;
         this.alive = true;
+        this.districtPartner = null;
         this.available = true;
         this.alliance = new ArrayList<>();
         this.weapons = new ArrayList<>();
@@ -99,10 +103,11 @@ public class Player{
         return level;
     }
 
-    public void levelUp(int health, int defence, int attack){
+    public void levelUp(int health, int defence, int attack, int dexterity){
         this.totalHealth += health;
-        this.defence = defence;
-        this.attack = attack;
+        this.defence += defence;
+        this.attack += attack;
+        this.dexterity += dexterity;
         this.level ++;
         this.health += health;
     }
@@ -119,6 +124,14 @@ public class Player{
 
     public int getDexterity(){
         return this.dexterity;
+    }
+
+    public int getDistrict(){
+        return this.district;
+    }
+
+    public void setDistrict(int d){
+        this.district = d;
     }
 
     public boolean setHP(int damage){
@@ -149,7 +162,7 @@ public class Player{
     public boolean getAvailability() { return this.available; }
 
     public boolean equals(Player p) {
-        return p.getFullName() == name + " " + lastName;
+        return p.getFullName().equals(this.getFullName());
     }
 
     public void setLover(Player p){
@@ -188,6 +201,14 @@ public class Player{
         return alliance.get(r.generateNumber(alliance.size()-1));
     }
 
+    public boolean hasDistrictPartner(){
+        return districtPartner != null;
+    }
+
+    public void setDistrictPartner(Player partner){
+        this.districtPartner = partner;
+    }
+
     public boolean hasAnAlly(){
         return !this.getAllies().isEmpty();
     }
@@ -196,8 +217,10 @@ public class Player{
         this.alliance.add(p);
     }
 
-    public void removeAlliesAsIsDead(){
+    public void removeAllAllies(){
         for(Player p: alliance){
+            // If ConcurrentModificationException here:
+//            System.out.println(p.getName() + " removing " + this.getName());
             p.removeAlly(this);
         }
         this.getAllies().clear();

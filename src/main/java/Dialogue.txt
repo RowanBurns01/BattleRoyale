@@ -1,0 +1,5 @@
+msg += "Just as " + loser.getName() + " was about to be killed by " + winner.getName() +", " + loser.getLover().getName() + " sacrificed himself out of love.\n";
+msg += winner.getName() + " became paranoid that his lover " + loser.getName() + " was going to betray him.\n";
+msg += winner.getName() + " used the cover of night to sneak into " + loser.getName() + "'s campsite.\n";
+msg += winner.getName() + " used the cover of night to sneak into " + loser.getName() + "'s campsite.\n";
+
