@@ -3,26 +3,19 @@ package model.entities.actionStrategies;
 import controller.Post;
 import model.Simulation;
 import model.entities.Player;
-import model.entities.Random;
-
+import model.utilities.Random;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FormAllegiance extends ActionStrategies {
-    Random r = new Random();
-    Simulation simulation;
-    List<String> hourLog;
-    List<Player> contestants;
-    Post post;
+    private Random r = new Random();
 
     @Override
     public void action(Player a, Simulation s) {
 
-        simulation = s;
-        hourLog = simulation.getHourLog();
-        contestants = simulation.getContestants();
-        post = simulation.getPost();
+        List<String> hourLog = s.getHourLog();
+        List<Player> contestants = s.getContestants();
+        Post post = s.getPost();
 
         //Get teams:
 
@@ -30,9 +23,7 @@ public class FormAllegiance extends ActionStrategies {
         teamOne.add(a);
 
         Player b = r.chooseRandomPerson(teamOne, contestants);
-        if(b == null){
-            return;
-        } else {
+        if(b != null){
             List<Player> teamTwo = new ArrayList<>(b.getAllies());
             teamTwo.add(b);
 
@@ -52,36 +43,41 @@ public class FormAllegiance extends ActionStrategies {
                 }
             }
 
-            String message = "";
+            StringBuilder message = new StringBuilder();
 
             if(teamOne.size() == 1){
-                message += teamOne.get(0).getName();
-                message += " has formed an allegiance with ";
+                message.append(teamOne.get(0).getName());
+                message.append(" has formed an alliance with ");
             } else {
                 for(int i = 0; i< teamOne.size()-1 ; i++) {
-                    message += teamOne.get(i).getName() + ", ";
+                    message.append(teamOne.get(i).getName()).append(", ");
                 }
-                message += "and";
-                message = message.replace(", and", " and");
-                message += String.format(" %s have formed an allegiance with ",teamOne.get(teamOne.size()-1).getName());
+                message.append("and");
+                message = new StringBuilder(message.toString().replace(", and", " and"));
+                message.append(String.format(" %s have formed an alliance with ", teamOne.get(teamOne.size() - 1).getName()));
             }
 
-
-            if(teamTwo.size() == 1){
-                message += teamTwo.get(0).getName() + ".";
-            } else {
-                for(int i = 0; i< teamTwo.size()-1 ; i++) {
-                    message += teamTwo.get(i).getName() + ", ";
-                }
-                message += "and";
-                message = message.replace(", and", " and");
-                message += String.format(" %s.",teamTwo.get(teamTwo.size()-1).getName());
-            }
-
-            hourLog.add(message);
-            post.addPlayers(all);
+            playersInvolvedString(hourLog, post, teamTwo, all, message.toString());
 
         }
 
+    }
+
+    static void playersInvolvedString(List<String> hourLog, Post post, List<Player> teamTwo, List<Player> all, String message) {
+        if(teamTwo.size() == 1){
+            message += teamTwo.get(0).getName() + ".";
+        } else {
+            StringBuilder messageBuilder = new StringBuilder(message);
+            for(int i = 0; i< teamTwo.size()-1 ; i++) {
+                messageBuilder.append(teamTwo.get(i).getName()).append(", ");
+            }
+            message = messageBuilder.toString();
+            message += "and";
+            message = message.replace(", and", " and");
+            message += String.format(" %s.",teamTwo.get(teamTwo.size()-1).getName());
+        }
+
+        hourLog.add(message);
+        post.addPlayers(all);
     }
 }

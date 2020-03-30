@@ -22,6 +22,9 @@ public class FallInLove extends ActionStrategies {
         if(chosen.getLover() == null){
             if(lover != null){
                 if(lover.getLover() == null) {
+                    if(s.getPublish()){
+                        System.out.print("\nlove");
+                    }
                     hourLog.add(chosen.getName() + " and " + lover.getName() + " have fallen in love.");
                     chosen.setLover(lover);
                     lover.setLover(chosen);

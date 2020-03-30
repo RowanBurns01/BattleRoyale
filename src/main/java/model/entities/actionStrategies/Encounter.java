@@ -3,26 +3,25 @@ package model.entities.actionStrategies;
 import controller.Post;
 import model.Simulation;
 import model.entities.Player;
-import model.entities.Random;
+import model.utilities.Random;
+import model.entities.sortingApproaches.SortBySpeed;
 import model.entities.Weapon;
 
 import java.util.*;
 
 public class Encounter extends ActionStrategies {
 
-    Random r = new Random();
-    Simulation simulation;
-    List<String> hourLog;
-    List<Player> contestants;
-    Post post;
+    private Random r = new Random();
+    private List<String> hourLog;
+    private List<Player> contestants;
+    private Post post;
 
     @Override
     public void action(Player a, Simulation s) {
 
-        simulation = s;
-        hourLog = simulation.getHourLog();
-        contestants = simulation.getContestants();
-        post = simulation.getPost();
+        hourLog = s.getHourLog();
+        contestants = s.getContestants();
+        post = s.getPost();
         boolean backStab = false;
         // setup
         // side a vs side b
@@ -67,9 +66,7 @@ public class Encounter extends ActionStrategies {
                 }
             }
 
-
-            // can't work out how to use the comparator to sort by dexterity
-            Collections.shuffle(fighters);
+            fighters.sort(new SortBySpeed());
 
             for(Player attacker : fighters){
                 if(death == null){
@@ -80,8 +77,16 @@ public class Encounter extends ActionStrategies {
                         receiver = r.chooseRandomPerson(teamOne);
                     }
                     boolean kill = attacker.attack(receiver);
+
 //                    hourLog.add(String.format("%s has attacked %s",attacker.getName(),receiver.getName()));
                     if(kill){
+                        if(receiver.hasLover()){
+                            hourLog.add("Just as " + receiver.getName() + " was about to be killed by " + attacker.getName() +", " + receiver.getLover().getName() + " sacrificed himself out of love.");
+                            receiver.setHP(Integer.MAX_VALUE);
+                            receiver.setHP(-receiver.getLover().getHealth());
+                            receiver = receiver.getLover();
+                            receiver.setHP(Integer.MAX_VALUE);
+                        }
                         death(attacker,receiver);
                         death = receiver;
                     }
@@ -100,7 +105,7 @@ public class Encounter extends ActionStrategies {
 
     }
 
-    public List<Player> flee(List<Player> smallerTeam, List<Player> largerTeam){
+    private List<Player> flee(List<Player> smallerTeam, List<Player> largerTeam){
 
         List<Player> fleeing = new ArrayList<>();
         int teamSize = largerTeam.size();
@@ -115,46 +120,44 @@ public class Encounter extends ActionStrategies {
         }
 
         if(!fleeing.isEmpty()){
-            String msg = "";
+            StringBuilder msg = new StringBuilder();
             if(fleeing.size() == 1){
-                msg += String.format("%s has",fleeing.get(0).getName());
+                msg.append(String.format("%s has", fleeing.get(0).getName()));
             } else {
                 for(int k = 0; k < fleeing.size()-1; k++) {
-                    msg += fleeing.get(k).getName() + ", ";
+                    msg.append(fleeing.get(k).getName()).append(", ");
                     post.addPlayer(fleeing.get(k));
                 }
-                msg += ".";
-                msg = msg.replace(", ."," and ");
-                msg = String.format(msg +"%s have",fleeing.get(fleeing.size()-1).getName());
+                msg.append(".");
+                msg = new StringBuilder(msg.toString().replace(", .", " and "));
+                msg = new StringBuilder(String.format(msg + "%s have", fleeing.get(fleeing.size() - 1).getName()));
             }
             hourLog.add(msg + " fled from the battle!");
         }
         return fleeing;
     }
 
-    public void death(Player attacker, Player receiver){
+    private void death(Player attacker, Player receiver){
         receiver.removeAllAllies();
         receiver.setAlive(false);
-        hourLog.add(attacker.getName() + " has killed " + receiver.getName() + " with his " + attacker.getLastUsedWeapon().getName() + ".");
+        String msg = attacker.getName() + " has killed " + receiver.getName() + " with his " + attacker.getLastUsedWeapon().getName() + ".";
         Weapon dropped = receiver.getOneWeapon();
-        if(dropped.getValue() != 0){
+        if(dropped.getValue() != 0 && contestants.size() != 2){
             attacker.addWeapon(dropped);
-            hourLog.add("From "+ receiver.getName() +"'s body, " + attacker.getName() + " has acquired a " + dropped.getName() + ".");
+            if(dropped.getName().equals("throwing knives")){ //hard coding
+                msg += " " + attacker.getName() + " has taken  the " + dropped.getName() + " from "+ receiver.getName() +"'s body.";
+            } else {
+                msg += " " + attacker.getName() + " has taken the " + dropped.getName() + " from "+ receiver.getName() +"'s body.";
+            }
         }
+        hourLog.add(msg);
         if(attacker.incKillCount()){
-            int level = attacker.getLevel();
-            int health = r.generateNumber(attacker.getTotalHealth());
-            int defence = r.generateNumber(level*10);
-            int attack = r.generateNumber( level*10);
-            int dexterity = r.generateNumber( level * 5);
-            String s = String.format("%s has leveled up to level %s:\n Health : %s\n Attack : %s\n Defence : %s\n Dexterity : %s",attacker.getName(), Integer.toString(attacker.getLevel()+1),attacker.getHealth() + " + " + health, attacker.getAttack() + " + " + attack, attacker.getDefence() + " + " + defence, attacker.getDexterity() + " + " + dexterity);
-            hourLog.add(s);
-            attacker.levelUp(health,defence,attack, dexterity);
+            hourLog.add(attacker.levelUp());
         }
     }
 
-    public void start(List<Player> a, List<Player> b, boolean backStab){
-        String message = "";
+    private void start(List<Player> a, List<Player> b, boolean backStab){
+        StringBuilder message = new StringBuilder();
         List<Player> teamOne;
         List<Player> teamTwo;
         if(a.size()> b.size()){
@@ -166,78 +169,75 @@ public class Encounter extends ActionStrategies {
         }
 
         if(teamOne.size() == 1){
-            message += teamOne.get(0).getName();
+            message.append(teamOne.get(0).getName());
             if(backStab){
-                message += " has broken the allegiance and turned on ";
+                message.append(" has decided to turn on ");
             } else {
-                message += " has attacked ";
+                message.append(" has attacked ");
             }
         } else {
             for(int i = 0; i< teamOne.size()-1 ; i++) {
-                message += teamOne.get(i).getName() + ", ";
+                message.append(teamOne.get(i).getName()).append(", ");
             }
-            message += "and";
-            message = message.replace(", and", " and");
+            message.append("and");
+            message = new StringBuilder(message.toString().replace(", and", " and"));
             if(backStab){
-                message += String.format(" %s have broken their allegiance and turned on ",teamOne.get(teamOne.size()-1).getName());
+                message.append(String.format(" %s have decided to turn on ", teamOne.get(teamOne.size() - 1).getName()));
             } else {
-                message += String.format(" %s have attacked ",teamOne.get(teamOne.size()-1).getName());
+                message.append(String.format(" %s have attacked ", teamOne.get(teamOne.size() - 1).getName()));
             }
 
         }
 
-
-        if(teamTwo.size() == 1){
-            message += teamTwo.get(0).getName() + ".";
-        } else {
-            for(int i = 0; i< teamTwo.size()-1 ; i++) {
-                message += teamTwo.get(i).getName() + ", ";
-            }
-            message += "and";
-            message = message.replace(", and", " and");
-            message += String.format(" %s.",teamTwo.get(teamTwo.size()-1).getName());
+        if(teamTwo.isEmpty()){
+            System.out.println("Error");
         }
-
-        hourLog.add(message);
-        post.addPlayers(teamOne);
+        FormAllegiance.playersInvolvedString(hourLog, post, teamTwo, teamOne, message.toString());
         post.addPlayers(teamTwo);
     }
 
-    public List<Player> backStab(Player p){
+    private List<Player> backStab(Player p){
         List<Player> groupOne = new ArrayList<>();
         List<Player> groupTwo = new ArrayList<>();
-
+        boolean twoLovers = false;
         if(!p.getAllies().isEmpty()){
-
-            List<Player> originalGroup = new ArrayList<>(p.getAllies());
-            //SPlit allegiance
-
-
-            groupOne.add(p);
-            Collections.shuffle(originalGroup);
-            groupTwo.add(originalGroup.get(0));
-
-            for(int i = 1; i < originalGroup.size(); i++){
-                originalGroup.get(i).removeAllAllies();
-                if(r.generateNumber(1)== 1){
-                    groupOne.add(originalGroup.get(i));
-                } else {
-                    groupTwo.add(originalGroup.get(i));
+            if(p.hasLover()) {
+                if((p.getAllies().size() ==1 && p.getAllies().get(0).equals(p.getLover()))) {
+                    twoLovers = true;
                 }
             }
+            if(!twoLovers){
+                List<Player> originalGroup = new ArrayList<>(p.getAllies());
 
-            for(Player p1: groupOne){
-                for(Player p2: groupOne){
-                    if(!p1.equals(p2)){
-                        p1.addAlly(p2);
+                groupOne.add(p);
+                if(p.hasLover()){
+                    groupOne.add(p.getLover());
+                }
+                Collections.shuffle(originalGroup);
+                groupTwo.add(originalGroup.get(0));
+
+                for(int i = 1; i < originalGroup.size(); i++){
+                    originalGroup.get(i).removeAllAllies();
+                    if(r.generateNumber(1)== 1){
+                        groupOne.add(originalGroup.get(i));
+                    } else {
+                        groupTwo.add(originalGroup.get(i));
                     }
                 }
-            }
 
-            for(Player p1: groupTwo){
-                for(Player p2: groupTwo){
-                    if(!p1.equals(p2)){
-                        p1.addAlly(p2);
+                for(Player p1: groupOne){
+                    for(Player p2: groupOne){
+                        if(!p1.equals(p2)){
+                            p1.addAlly(p2);
+                        }
+                    }
+                }
+
+                for(Player p1: groupTwo){
+                    for(Player p2: groupTwo){
+                        if(!p1.equals(p2)){
+                            p1.addAlly(p2);
+                        }
                     }
                 }
             }

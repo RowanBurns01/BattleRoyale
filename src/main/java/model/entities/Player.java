@@ -2,17 +2,17 @@ package model.entities;
 
 import model.Simulation;
 import model.entities.actionStrategies.ActionStrategies;
+import model.utilities.Random;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
-public class Player{
+public class Player {
 
     // Stats
     private String name;
     private String lastName;
+    private String assignedPartner;
     private int level;
     private int totalHealth;
     private int health;
@@ -23,8 +23,6 @@ public class Player{
 
     private List<Player> alliance;
     private Player lover;
-    private Player killer;
-
     private Player districtPartner;
     private int district;
 
@@ -34,19 +32,19 @@ public class Player{
     private boolean alive;
     private boolean available;
 
-    public Player (String name, String lastName) {
+    public Player(String name, String lastName, String assignedPartner) {
+        this.assignedPartner = assignedPartner;
         this.health = r.generateNumber(40) + 80; // 80-120
-        this.totalHealth = health;
         this.attack = r.generateNumber(8) + 6;   // 6-14
         this.defence = r.generateNumber(8) + 6;  // 6-14
         this.dexterity = r.generateNumber(5) + 2;// 2-7
+        this.totalHealth = health;
         this.level = 1;
         this.name = name;
         this.lastName = lastName;
         this.district = 0;
         this.killCount = 0;
         this.lover = null;
-        this.killer = null;
         this.alive = true;
         this.districtPartner = null;
         this.available = true;
@@ -58,158 +56,125 @@ public class Player{
         actionStrategies.action(this, s);
     }
 
-    public Weapon getOneWeapon(){
-        if(weapons.isEmpty()){
+    public Weapon getOneWeapon() {
+        if (weapons.isEmpty()) {
             lastUsedWeapon = new Weapon("bare hands", 0);
         } else {
-            lastUsedWeapon = weapons.get(r.generateNumber(weapons.size()-1));
+            lastUsedWeapon = weapons.get(r.generateNumber(weapons.size() - 1));
         }
         return lastUsedWeapon;
     }
 
-    public Weapon getLastUsedWeapon(){
-        return lastUsedWeapon;
-    }
-
-    public int getTotalHealth(){
-        return totalHealth;
-    }
-
-    public int getHealth(){
-        return health;
-    }
-
-    public int getAttack(){
-        return attack;
-    }
-
-    public int getDefence(){
-        return attack;
-    }
-
-    public void setDefence(float num){
-        this.defence += num;
-    }
-
-    public void setAttack(float num){
-        this.attack += num;
-    }
-
-    public void setDexterity(int num){
-        this.dexterity += num;
-    }
-
-    public int getLevel(){
-        return level;
-    }
-
-    public void levelUp(int health, int defence, int attack, int dexterity){
-        this.totalHealth += health;
+    public String levelUp() {
+        int level = this.getLevel();
+        int health = r.generateNumber(this.getTotalHealth());
+        int defence = 0;
+        int attack = 0;
+        int dexterity = 0;
+        String s = String.format("%s has leveled up!", this.getName());
+        switch (r.generateNumber(2)) {
+            case 0:
+                defence = 5 + r.generateNumber(level * 10);
+                s += " He has regained health and his defence has increased.";
+                break;
+            case 1:
+                attack = 5 + r.generateNumber(level * 10);
+                s += " He has regained health and his attack has increased.";
+                break;
+            case 2:
+                dexterity = 5 + r.generateNumber(level * 5);
+                s += " He has regained health and his speed has increased.";
+                break;
+        }
+        this.health += health;
+        if (this.health > totalHealth) {
+            this.totalHealth = this.health;
+        }
         this.defence += defence;
         this.attack += attack;
         this.dexterity += dexterity;
-        this.level ++;
-        this.health += health;
+        this.level++;
+        return s;
     }
 
     public boolean attack(Player receiver) {
-        float damage = ((((float) level)*2/5)+1) * ((((float) attack) + getOneWeapon().getValue())/(((float)defence)/10));
+        float damage = ((((float) level) * 2 / 5) + 1) * ((((float) attack) + getOneWeapon().getValue()) / (((float) defence) / 10));
         int rounded = Math.round(damage);
-        //dodge
-        if(receiver.getDexterity() > r.generateNumber(100)){
+        // Dodge
+        if (receiver.getDexterity() > r.generateNumber(100)) {
             return false;
         }
         return receiver.setHP(rounded);
     }
 
-    public int getDexterity(){
-        return this.dexterity;
-    }
-
-    public int getDistrict(){
-        return this.district;
-    }
-
-    public void setDistrict(int d){
-        this.district = d;
-    }
-
-    public boolean setHP(int damage){
+    public boolean setHP(int damage) {
         this.health -= damage;
-        if(health<= 0){
+        if (health <= 0) {
             health = 0;
             return true;
+        }
+        if (health > totalHealth) {
+            health = totalHealth;
         }
         return false;
     }
 
-    public List<Weapon> getWeapons(){
+    public List<Weapon> getWeapons() {
         return weapons;
     }
 
-    public void removeWeapon(Weapon w){
+    public void removeWeapon(Weapon w) {
         this.weapons.remove(w);
     }
 
-    public void addWeapon(Weapon w){
+    public void addWeapon(Weapon w) {
         this.weapons.add(w);
     }
 
-    public void setAvailable(){ this.available = true; }
+    public void setAvailable() {
+        this.available = true;
+    }
 
-    public void setUnavailable(){ this.available = false; }
-
-    public boolean getAvailability() { return this.available; }
+    public boolean getAvailability() {
+        return this.available;
+    }
 
     public boolean equals(Player p) {
         return p.getFullName().equals(this.getFullName());
     }
 
-    public void setLover(Player p){
-        this.lover = p;
-    }
-
-    public Player getLover(){
+    public Player getLover() {
         return this.lover;
     }
 
-    public boolean hasLover() {
-        return ( this.getLover() != null);
+    public void setLover(Player p) {
+        this.lover = p;
     }
 
-    public Player getKiller() { return this.killer; }
-
-    public void setKiller(Player k) {this.killer = k; }
+    public boolean hasLover() {
+        if (this.getLover() != null) {
+            return this.getLover().getAlive();
+        }
+        return false;
+    }
 
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
 
-    public Boolean getAlive(){
+    public Boolean getAlive() {
         return this.alive;
     }
 
-    public boolean checkIfAlly(Player p) {
-        return alliance.contains(p);
-    }
-
-    public void removeAlly(Player p){
+    private void removeAlly(Player p) {
         this.getAllies().remove(p);
     }
 
-    public Player chooseRandomAlly(){
-        return alliance.get(r.generateNumber(alliance.size()-1));
+    public Player chooseRandomAlly() {
+        return alliance.get(r.generateNumber(alliance.size() - 1));
     }
 
-    public boolean hasDistrictPartner(){
-        return districtPartner != null;
-    }
-
-    public void setDistrictPartner(Player partner){
-        this.districtPartner = partner;
-    }
-
-    public boolean hasAnAlly(){
+    public boolean hasAnAlly() {
         return !this.getAllies().isEmpty();
     }
 
@@ -217,8 +182,8 @@ public class Player{
         this.alliance.add(p);
     }
 
-    public void removeAllAllies(){
-        for(Player p: alliance){
+    public void removeAllAllies() {
+        for (Player p : alliance) {
             // If ConcurrentModificationException here:
 //            System.out.println(p.getName() + " removing " + this.getName());
             p.removeAlly(this);
@@ -232,19 +197,14 @@ public class Player{
 
     public boolean incKillCount() {
         this.killCount++;
-        if(killCount == 3|| killCount == 6|| killCount == 9){
-            return true;
-        }
-        return false;
+        return killCount == 2 || killCount == 4 || killCount == 7 || killCount == 11;
     }
-
-    public void decKillCount() {this.killCount--;}
 
     public int getKillCount() {
         return this.killCount;
     }
 
-    public String getImagePath(){
+    public String getImagePath() {
         return name + lastName + ".jpg";
     }
 
@@ -254,6 +214,54 @@ public class Player{
 
     public String getFullName() {
         return name + " " + lastName;
+    }
+
+    public Weapon getLastUsedWeapon() {
+        return lastUsedWeapon;
+    }
+
+    public int getTotalHealth() {
+        return totalHealth;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getDexterity() {
+        return this.dexterity;
+    }
+
+    public int getDistrict() {
+        return this.district;
+    }
+
+    public void setDistrict(int d) {
+        this.district = d;
+    }
+
+    public boolean hasNoDistrictPartner() {
+        return districtPartner == null;
+    }
+
+    public void setDistrictPartner(Player partner) {
+        this.districtPartner = partner;
+    }
+
+    public String getAssignedPartner() {
+        return this.assignedPartner;
     }
 
 }

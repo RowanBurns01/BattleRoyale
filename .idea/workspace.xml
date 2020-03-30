@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f97a53f1-b2ae-45f4-a748-9d319ae6ffea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Items/Machete.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Items/Spear.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Items/Sword.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Items/Throwing Knives.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Items/Trident.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Table.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Gift.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -15,110 +12,80 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/SetUp.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/Day.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/Day.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/Post.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/Post.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Simulation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/Random.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/Weapon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/AccidentalDeath.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/AccidentalDeath.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Duel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Encounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Encounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FallInLove.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FallInLove.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FormAllegiance.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/FormAllegiance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Loot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Loot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Ballistic Knife.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/BenGilmore.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Bow and Arrow.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/DanielBuffa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Diamond Sword.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/EdSisson.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/HugoTreloar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JackPaterson.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JarrodChisholm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JayKotecha.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JonahKingery.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JosephMcGrath.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JoshLorschy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/JustinFord.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MarcusValastro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/MattSullivan.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/NarenIyer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/OscarPursey.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/ParhamRaoof.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/RowanBurns.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/RutkayAlici.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/SamEames.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Serrated Frisbee.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Throwing Axe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/TimHughes.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/TomWilliams.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/WillLind.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/WillPerry.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/XavierMorris.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SetUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SetUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/entities/actionStrategies/Steal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/RedCross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/EdSisson.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/EdSisson.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/HugoTreloar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/HugoTreloar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/JonahKingery.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/JosephMcGrath.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/JustinFord.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/JustinFord.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/MarcusValastro.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/MarcusValastro.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/NarenIyer.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/NarenIyer.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/OscarPursey.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/ParhamRaoof.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/ParhamRaoof.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/RowanBurns.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/RowanBurns.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/WillLind.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Tributes/XavierMorris.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Tributes/XavierMorris.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dialogue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SetUp.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Random.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/AccidentalDeath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Duel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/ActionStrategies.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Encounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FallInLove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FormAllegiance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/FormAllegiance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/GroupFight.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Loot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenarios.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dialogue.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/output/post9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Ballistic Knife.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/BenGilmore.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/BenGilmore.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Bow and Arrow.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Items/Bow and Arrow.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DanielBuffa.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/DanielBuffa.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Diamond Sword.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/EdSisson.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/EdSisson.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/HugoTreloar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/HugoTreloar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JackPaterson.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JackPaterson.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JarrodChisholm.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JarrodChisholm.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JayKotecha.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JayKotecha.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JonahKingery.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JonahKingery.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JosephMcGrath.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JosephMcGrath.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JoshLorschy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JoshLorschy.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/JustinFord.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/JustinFord.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MarcusValastro.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/MarcusValastro.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/MattSullivan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/MattSullivan.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/NarenIyer.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/NarenIyer.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/OscarPursey.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/OscarPursey.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ParhamRaoof.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/ParhamRaoof.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/RowanBurns.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/RowanBurns.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/RutkayAlici.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/RutkayAlici.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SamEames.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/SamEames.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Serrated Frisbee.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Throwing Axe.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Items/Throwing Axe.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TimHughes.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/TimHughes.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TomWilliams.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/TomWilliams.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/WillLind.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/WillLind.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/WillPerry.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/WillPerry.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/XavierMorris.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Tributes/XavierMorris.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Steal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/entities/actionStrategies/Assassinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Bow and Arrow.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Machete.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Spear.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Sword.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Throwing Axe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Throwing Knives.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Items/Trident.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/RedCross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/BenGilmore.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/DanielBuffa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/EdSisson.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/HugoTreloar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JackPaterson.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JarrodChisholm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JayKotecha.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JonahKingery.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JosephMcGrath.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JoshLorschy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/JustinFord.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/MarcusValastro.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/MattSullivan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/NarenIyer.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/OscarPursey.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/ParhamRaoof.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/RowanBurns.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/RutkayAlici.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/SamEames.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/TimHughes.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/TomWilliams.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/WillLind.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/WillPerry.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Tributes/XavierMorris.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,6 +116,7 @@
         <option value="JavaFXApplication" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -169,9 +137,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -179,17 +152,13 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\Tributes" />
-      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\Items" />
-      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -199,6 +168,13 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
       <recent name="java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\utilities" />
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\tributes" />
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources" />
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\items" />
+      <recent name="C:\Users\rljb\Desktop\Organised Folders\GitHub\Royale\src\main\resources\Utility" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -214,8 +190,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SetUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SetUp" />
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
       <module name="untitled.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -223,7 +199,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SetUp" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -267,7 +243,13 @@
       <workItem from="1584155498094" duration="15145000" />
       <workItem from="1585121543344" duration="15303000" />
       <workItem from="1585168054127" duration="45000" />
-      <workItem from="1585198406118" duration="21692000" />
+      <workItem from="1585198406118" duration="21786000" />
+      <workItem from="1585256794489" duration="44807000" />
+      <workItem from="1585347180561" duration="11475000" />
+      <workItem from="1585360919720" duration="27452000" />
+      <workItem from="1585455188041" duration="17406000" />
+      <workItem from="1585540412340" duration="2659000" />
+      <workItem from="1585544397311" duration="4929000" />
     </task>
     <servers />
   </component>

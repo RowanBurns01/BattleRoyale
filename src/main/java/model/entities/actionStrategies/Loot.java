@@ -2,7 +2,7 @@ package model.entities.actionStrategies;
 
 import controller.Post;
 import model.entities.Player;
-import model.entities.Random;
+import model.utilities.Random;
 import model.entities.Weapon;
 import model.Simulation;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Loot extends ActionStrategies {
 
-    Random r = new Random();
+    private Random r = new Random();
 
     @Override
     public void action(Player p, Simulation s) {
@@ -25,9 +25,12 @@ public class Loot extends ActionStrategies {
                 weaponry.remove(w);
                 p.addWeapon(w);
                 post.addPlayer(p);
-                hourLog.add(p.getName() + " has acquired a " + w.getName() + ".");
+                if(w.getName().equals("throwing knives")){ //hard coding
+                    hourLog.add(p.getName() + " has picked up " + w.getName() + ".");
+                } else {
+                    hourLog.add(p.getName() + " has picked up a " + w.getName() + ".");
+                }
             }
-
         }
     }
 }

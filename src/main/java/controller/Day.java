@@ -11,18 +11,17 @@ public class Day {
 
     public Day(){
         this.day = 1;
-        this.hour = 8;
+        this.hour = 14;
         this.minute = 0;
     }
 
-    public Date getDate(){
+    Date getDate(){
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY,hour + 24*day);
         cal.set(Calendar.MINUTE,minute);
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
-        Date d = cal.getTime();
-        return d;
+        return cal.getTime();
     }
 
     public void nextHour() {
@@ -53,7 +52,7 @@ public class Day {
         return this.hour;
     }
 
-    public String getStringMinute(){
+    private String getStringMinute(){
         if(minute < 10){
             return "0" + minute;
         } else {
@@ -62,7 +61,6 @@ public class Day {
     }
 
     public String getTimeOfDay() {
-
         if(hour == 0){
             return "Midnight";
         } else if (hour == 12){
